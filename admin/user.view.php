@@ -204,6 +204,9 @@
                         return '<button class="edit-btn" data-id="' + row.userID + '">Edit</button> <button class="delete-btn" data-id="' + row.userID + '">Delete</button>';
                     }
                 }
+            ],
+            "buttons": [
+                'copy', 'excel', 'pdf', 'print' // Add buttons for copy, excel, pdf, and print
             ]
         });
 

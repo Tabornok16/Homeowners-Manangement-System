@@ -45,22 +45,22 @@
                 </button>
                 <br><br>
                 <div class="table-responsive">
-    <table id="propertyTable" class="table table-bordered table-striped dataTable dtr-inline collapsed">
-        <thead>
-            <tr>
-                <th>Property ID</th>
-                <th>User ID</th>
-                <th>Jeast ID</th>
-                <th>Lot Area</th>
-                <th>Jeast Address</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Add more rows as needed -->
-        </tbody>
-    </table>
-</div>
+                    <table id="propertyTable" class="table table-hover table-bordered table-striped dataTable dtr-inline collapsed">
+                        <thead>
+                            <tr>
+                                <th>Property ID</th>
+                                <th>Name</th>
+                                <th>Jeast ID</th>
+                                <th>Lot Area</th>
+                                <th>Jeast Address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
             <!-- /.card-body -->
@@ -93,7 +93,7 @@
                         <input type="text" class="form-control" id="propertyId" name="propertyId">
                     </div>
                     <div class="form-group">
-                        <label for="userId">Homeowner:</label>
+                        <label for="userId">Home    owner:</label>
                         <select class="form-control" id="userId" name="userId">
                             <option value="">Select Homeowner</option>
                             <?php
@@ -102,7 +102,7 @@
                             $result = $conn->query($query);
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row['user_id'] . '">' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
+                                    echo '<option value="' . $row['firstname'] . ' ' . $row['lastname'] . '">' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
                                 }
                             }
                             ?>
