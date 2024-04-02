@@ -20,7 +20,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="../router.php?page=logout" style="font-size: 18px;">
+      <a class="nav-link" href="../logout.php" style="font-size: 18px;">
         <i class="ion-log-out" style="color: red;"></i> Log Out
       </a>
     </li>
