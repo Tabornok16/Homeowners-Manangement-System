@@ -44,22 +44,24 @@
                     Add Property
                 </button>
                 <br><br>
-                <table id="propertyTable" class="table table-bordered table-striped dataTable dtr-inline collapsed">
-                    <thead>
-                        <tr>
-                            <th>Property ID</th>
-                            <th>User ID</th>
-                            <th>Jeast ID</th>
-                            <th>Lot Area</th>
-                            <th>Jeast Address</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="table-responsive">
+    <table id="propertyTable" class="table table-bordered table-striped dataTable dtr-inline collapsed">
+        <thead>
+            <tr>
+                <th>Property ID</th>
+                <th>User ID</th>
+                <th>Jeast ID</th>
+                <th>Lot Area</th>
+                <th>Jeast Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</div>
 
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
@@ -166,10 +168,8 @@
         $('#addPropertyForm').submit(function(e) {
             e.preventDefault(); // Prevent default form submission
             // Add your AJAX request to submit form data here
-            // Example:
-            /*
             $.ajax({
-                url: 'add_property.php',
+                url: 'php/add_property.php',
                 method: 'POST',
                 data: $(this).serialize(),
                 success: function(response) {
@@ -179,15 +179,17 @@
                     $('#addPropertyModal').modal('hide');
                     // Refresh DataTable
                     $('#propertyTable').DataTable().ajax.reload();
+                    // Show success toast
+                    toastr.success('Property added successfully');
                 },
                 error: function(xhr, status, error) {
                     // Handle error
                     console.error(xhr.responseText);
+                    // Show error toast
+                    toastr.error('Error adding property: ' + xhr.responseText);
                 }
             });
-            */
         });
-
         // Handle click event for edit button       
         $('#propertyTable').on('click', '.edit-btn', function() {
             var propertyId = $(this).data('id');
