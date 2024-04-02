@@ -1,9 +1,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #36007E;">
     <!-- Brand Logo -->
-    <a href="index3.  html" class="brand-link">
-      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="./index.php" class="brand-link">
+      <img src="../assets/img/home-logo.png" alt="HOA Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">STAFF</span>
     </a>
 
     <!-- Sidebar -->
@@ -15,18 +15,6 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">Welcome <?php echo $username; ?></a>
-        </div>
-      </div>
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
         </div>
       </div>
 
@@ -44,37 +32,25 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="./user.view.php" class="nav-link">
               <i class="nav-icon fas fa-users"></i> <!-- Changed from "far fa-image" to "fas fa-users" for users -->
               <p>
                 Users
               </p>
             </a>
           </li>
+
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
-              <i class="nav-icon fas fa-exchange-alt"></i> <!-- Changed from "far fa-image" to "fas fa-exchange-alt" for transaction -->
-              <p>
-                Transaction
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="./property.view.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i> <!-- Changed from "far fa-image" to "fas fa-home" for property -->
               <p>
                 Property
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
-              <i class="nav-icon fas fa-money-bill-wave"></i> <!-- Changed from "far fa-image" to "fas fa-money-bill-wave" for set pricing -->
-              <p>
-                Set Pricing
-              </p>
-            </a>
-          </li>
+   
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
