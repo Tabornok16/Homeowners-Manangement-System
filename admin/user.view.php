@@ -40,7 +40,7 @@
             </div>
             <div class="card-body">
                 <!-- Button to trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPropertyModal">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">
                     Register New User
                 </button>
                 <br><br>
@@ -75,43 +75,77 @@
 <!-- /.content-wrapper -->
 
 <!-- Modal -->
-<div class="modal fade" id="addPropertyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Property</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="addPropertyForm">
-                    <div class="form-group">
-                        <label for="propertyId">Property ID:</label>
-                        <input type="text" class="form-control" id="propertyId" name="propertyId">
-                    </div>
-                    <div class="form-group">
-                        <label for="userId">User ID:</label>
-                        <input type="text" class="form-control" id="userId" name="userId">
-                    </div>
-                    <div class="form-group">
-                        <label for="jeastId">Jeast ID:</label>
-                        <input type="text" class="form-control" id="jeastId" name="jeastId">
-                    </div>
-                    <div class="form-group">
-                        <label for="lotArea">Lot Area:</label>
-                        <input type="text" class="form-control" id="lotArea" name="lotArea">
-                    </div>
-                    <div class="form-group">
-                        <label for="jeastAddress">Jeast Address:</label>
-                        <input type="text" class="form-control" id="jeastAddress" name="jeastAddress">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register New User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addUserForm">
+          <div class="form-group">
+            <label for="username">User Name:</label>
+            <input type="text" class="form-control" id="username" name="username">
+          </div>
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" id="firstName" name="firstName">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" class="form-control" id="lastName" name="lastName">
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+          <div class="form-group">
+            <label for="userType">User Type:</label>
+            <select class="form-control" id="userType" name="userType">
+              <option value="1">Admin</option>
+              <option value="2">Staff</option>
+              <option value="3">Homeowner</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select class="form-control" id="gender" name="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="birthday">Birthday:</label>
+            <input type="date" class="form-control" id="birthday" name="birthday" placeholder="mm/dd/yyyy">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber">
+          </div>
+          <div class="form-group">
+            <label for="mailingAddress">Mailing Address:</label>
+            <input type="text" class="form-control" id="mailingAddress" name="mailingAddress">
+          </div>
+          <div class="form-group">
+            <label for="postalCode">Postal Code:</label>
+            <input type="text" class="form-control" id="postalCode" name="postalCode">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
+
 
 
 <?php include('partial/footer.php'); ?>
