@@ -6,7 +6,7 @@ require_once '../../connect.php';
 $users = array();
 
 // Query to fetch users
-$sql = "SELECT * FROM user";
+$sql = "SELECT * FROM user WHERE userType = 3";
 $result = $conn->query($sql);
 
 // Check if there are any results

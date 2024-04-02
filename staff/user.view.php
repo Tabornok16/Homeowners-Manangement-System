@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Users</h1>
+                    <h1>Homeowners</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -41,7 +41,7 @@
             <div class="card-body">
                 <!-- Button to trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">
-                    Register New User
+                    Add Homeowner
                 </button>
                 <br><br>
                 <!-- DataTable for Users -->
@@ -86,7 +86,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Register New User</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add new homeowner</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

@@ -35,7 +35,7 @@
             <a href="./user.view.php" class="nav-link">
               <i class="nav-icon fas fa-users"></i> <!-- Changed from "far fa-image" to "fas fa-users" for users -->
               <p>
-                Users
+                Homeowner List
               </p>
             </a>
           </li>
