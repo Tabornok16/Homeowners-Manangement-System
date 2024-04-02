@@ -98,12 +98,12 @@
                         <input type="text" class="form-control" id="username" name="username">
                     </div>
                     <div class="form-group">
-                        <label for="firstName">First Name:</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName">
+                        <label for="firstname">First Name:</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname">
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Last Name:</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName">
+                        <label for="lastname">Last Name:</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname">
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
@@ -221,32 +221,36 @@
             console.log('Delete clicked for user ID:', userId);
         });
 
-
         // Submit form via Ajax
-        $('#addPropertyForm').submit(function(e) {
+        $('#addUserForm').submit(function(e) {
             e.preventDefault(); // Prevent default form submission
             // Add your AJAX request to submit form data here
-            // Example:
-            /*
             $.ajax({
-                url: 'add_property.php',
+                url: 'php/add_user.php', // URL to handle the form submission
                 method: 'POST',
-                data: $(this).serialize(),
+                data: $(this).serialize(), // Serialize form data
                 success: function(response) {
                     // Handle success response
                     console.log(response);
+                    // Display toast notification
+                    if (response.success) {
+                        toastr.success(response.message);
+                    } else {
+                        toastr.error(response.message);
+                    }
                     // Close modal
-                    $('#addPropertyModal').modal('hide');
+                    $('#addUserModal').modal('hide');
                     // Refresh DataTable
-                    $('#propertyTable').DataTable().ajax.reload();
+                    $('#userTable').DataTable().ajax.reload();
                 },
                 error: function(xhr, status, error) {
                     // Handle error
                     console.error(xhr.responseText);
+                    // Display generic error toast notification
+                    toastr.error('An error occurred while processing your request. Please try again later.');
                 }
             });
-            */
         });
-
     });
+
 </script>

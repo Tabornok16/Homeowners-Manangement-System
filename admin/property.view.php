@@ -1,7 +1,7 @@
 <?php include('partial/header.php'); ?>
 <?php include('partial/navbar.php'); ?>
 <?php include('partial/sidebar.php'); ?>
-
+<?php include('../connect.php'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -91,8 +91,20 @@
                         <input type="text" class="form-control" id="propertyId" name="propertyId">
                     </div>
                     <div class="form-group">
-                        <label for="userId">User ID:</label>
-                        <input type="text" class="form-control" id="userId" name="userId">
+                        <label for="userId">Homeowner:</label>
+                        <select class="form-control" id="userId" name="userId">
+                            <option value="">Select Homeowner</option>
+                            <?php
+                            // Query to fetch users from the database
+                            $query = "SELECT user_id, firstname, lastname FROM user";
+                            $result = $conn->query($query);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row['user_id'] . '">' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
+                                }
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="jeastId">Jeast ID:</label>

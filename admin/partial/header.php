@@ -42,18 +42,20 @@ if (isset($_SESSION['username'])) {
     <!-- summernote -->
     <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
 
-
+    <!-- Toastr -->
+    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
     <style>
-        .btn{
+        .btn {
             background-color: #11101D;
             border: 1px solid #11101D;
         }
-        .btn:hover{
+
+        .btn:hover {
             background-color: gray;
             border: 1px solid #11101D;
         }
@@ -66,4 +68,4 @@ if (isset($_SESSION['username'])) {
         <!-- Preloader -->
         <!-- <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-        </div> -->  
+        </div> -->
