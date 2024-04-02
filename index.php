@@ -86,7 +86,7 @@
           <h2>FOR JUBILATION HOME VILLAGE EAST</h2>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-        <img src="assets/img/home-logo.png" class="img-fluid animated" alt="" style="border-radius: 50%;">
+        <img src="assets/img/home-logo.png" class="img-fluid animated" alt="" style="border-radius: 50%; width: 50%;">
         </div> 
       </div>
     </div>
