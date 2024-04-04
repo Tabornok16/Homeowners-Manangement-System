@@ -271,7 +271,7 @@
           <div class="icon-box">
               <div class="icon" style="text-align: center;"><i class="bx bx-chat"></i></div>
               <h4><a href="">Community Communication and Events</a></h4>
-              <p>Facilitate communication between homeowners, HOA boards, and management teams. Organize community events, meetings, and newsletters to keep residents informed and engaged.s</p>
+              <p>Facilitate communication between homeowners, HOA boards, and management teams. Organize community events, meetings, and newsletters to keep residents informed and engaged.</p>
             </div>
           </div>
 

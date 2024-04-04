@@ -1,9 +1,9 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
+    <strong>Homeowner Mgt. Essentials</strong><br>
+    2024 All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
+      
     </div>
   </footer>
 
@@ -44,7 +44,7 @@
   <!-- overlayScrollbars -->
   <script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
-  <script src="../dist/js/adminlte.js"></script>
+  <!-- <script src="../dist/js/adminlte.js"></script> -->
 
   <!-- Toastr -->
   <script src="../plugins/toastr/toastr.min.js"></script>

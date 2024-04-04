@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
                         <li class="breadcrumb-item active">Set Price</li>
                     </ol>
                 </div>
@@ -51,7 +51,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                Footer
+                <!-- Footer -->
             </div>
             <!-- /.card-footer-->
         </div>

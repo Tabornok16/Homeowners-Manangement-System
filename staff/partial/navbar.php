@@ -59,9 +59,9 @@
       <a class="nav-link" style="font-size: 18px;">
         <i class="ion-calendar"></i>
         <?php
-        $Today = date('y:m:d');
-        $new = date('l, F d, Y', strtotime($Today));
-        echo $new;
+          date_default_timezone_set('Asia/Manila');
+          $currentDateTime = date('l, F d, Y H:i');
+          echo $currentDateTime;
         ?>
       </a>
     </li>

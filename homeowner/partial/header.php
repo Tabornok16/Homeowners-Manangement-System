@@ -1,10 +1,25 @@
+<?php
+// Start the session
+session_start();
+
+// Check if the username session variable is set
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    // You can now use $username in your code to display the username or perform any other operation
+} else {
+    // If the username session variable is not set, redirect the user to the login page
+    header("Location: login.php");
+    exit(); // Stop further execution
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Homeowner | Dashboard</title>
+    <title>Homeowner</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -26,12 +41,31 @@
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
+
+    <!-- Toastr -->
+    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+    <style>
+        .btn {
+            background-color: #11101D;
+            border: 1px solid #11101D;
+        }
+
+        .btn:hover {
+            background-color: gray;
+            border: 1px solid #11101D;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
         <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="../dist/img/tt.png" alt="AdminLTELogo" height="199" width="199">
-        </div>
+        <!-- <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        </div> -->
