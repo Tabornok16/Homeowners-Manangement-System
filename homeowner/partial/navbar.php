@@ -13,16 +13,17 @@
         <a class="nav-link" href="calendar.php" style="font-size: 18px;">
             <i class="ion-calendar"></i>
         <?php
-        $Today = date('y:m:d');
-        $new = date('F d, Y', strtotime($Today));
-        echo $new;
+          date_default_timezone_set('Asia/Manila');
+          $currentDateTime = date('l, F d, Y H:i');
+          echo $currentDateTime;
+
         ?>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="../logout.php" style="font-size: 18px;">
-        <i class="ion-log-out" style="color: gray;"></i> Log Out
-      </a>
+    <a class="nav-link" href="../logout.php" style="font-size: 18px;">
+  <i class="fas fa-power-off" style="color: orange;"></i> Log Out
+</a>
     </li>
   </ul>     
 </nav>

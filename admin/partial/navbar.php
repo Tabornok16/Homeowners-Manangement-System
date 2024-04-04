@@ -14,17 +14,18 @@
         <i class="ion-calendar" href="calendar.php"></i>
         <?php
 
-date_default_timezone_set('Asia/Manila');
-$currentDateTime = date('l, F d, Y H:i');
-echo $currentDateTime;
+          date_default_timezone_set('Asia/Manila');
+          $currentDateTime = date('l, F d, Y H:i');
+          echo $currentDateTime;
 
 
         ?>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="../logout.php" style="font-size: 18px;">
-        <i class="ion-log-out" style="color: red;"></i> Log Out
+    <a class="nav-link" href="../logout.php" style="font-size: 18px;">
+  <i class="fas fa-power-off" style="color: orange;"></i> Log Out
+</a>
       </a>
     </li>
   </ul>     
