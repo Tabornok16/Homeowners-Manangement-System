@@ -54,9 +54,9 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="../logout.php" style="font-size: 18px;">
-        <i class="ion-log-out" style="color: gray;"></i> Log Out
-      </a>
+    <a class="nav-link" href="../logout.php" style="font-size: 18px;">
+  <i class="fas fa-power-off" style="color: orange;"></i> Log Out
+</a>
     </li>
   </ul>     
 </nav>
@@ -68,7 +68,7 @@
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="assets\img\home-logo.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Homeowner</span>
+      <span class="brand-text font-weight-light">Admin</span>
     </a>
 
     <!-- Sidebar -->
@@ -79,7 +79,7 @@
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Joyce Wendy</a>
+          <a href="#" class="d-block">Admin Jay Velandres</a>
         </div>
       </div>
 
@@ -118,7 +118,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-exchange-alt"></i> <!-- Changed from "far fa-image" to "fas fa-exchange-alt" for transaction -->
               <p>
                 Transaction
@@ -126,7 +126,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="property.view.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i> <!-- Changed from "far fa-image" to "fas fa-home" for property -->
               <p>
                 Property
@@ -187,16 +187,16 @@
             <div class="sticky-top mb-3">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Draggable Events</h4>
+                  <h4 class="card-title">Draggable Event | Reservation</h4>
                 </div>
                 <div class="card-body">
                   <!-- the events -->
                   <div id="external-events">
-                    <div class="external-event bg-success">Lunch</div>
-                    <div class="external-event bg-warning">Go home</div>
-                    <div class="external-event bg-info">Do homework</div>
-                    <div class="external-event bg-primary">Work on UI design</div>
-                    <div class="external-event bg-danger">Sleep tight</div>
+                    <div class="external-event bg-success">Basketball Court</div>
+                    <div class="external-event bg-warning">Tennis Court</div>
+                    <div class="external-event bg-info">Swimming Pool</div>
+                    <div class="external-event bg-primary">Clubhouse</div>
+                    <div class="external-event bg-danger">Function Room</div>
                     <div class="checkbox">
                       <label for="drop-remove">
                         <input type="checkbox" id="drop-remove">
