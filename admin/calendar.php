@@ -110,7 +110,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="user.view.php" class="nav-link">
               <i class="nav-icon fas fa-users"></i> <!-- Changed from "far fa-image" to "fas fa-users" for users -->
               <p>
                 Users

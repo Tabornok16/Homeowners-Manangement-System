@@ -175,7 +175,7 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>44</h3>
+              <h3>8</h3>
 
               <p>Total Number of Reservations</p>
             </div>
