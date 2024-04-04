@@ -1,7 +1,7 @@
-<?include("partial/header.php");?>
-<?include("partial/navbar.php");?>
-<?include("partial/sidebar.php");?>
+<?php include("partial/header.php");?>
 
+<?php include("partial/sidebar.php");?>
+<?php include('../connect.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -40,14 +40,7 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-exchange-alt"></i> <!-- Changed from "far fa-image" to "fas fa-users" for users -->
-              <p>
-                Transactions
-              </p>
-            </a>
-          </li>
+
 
           <li class="nav-item">
             <a href="./property.view.php" class="nav-link">
