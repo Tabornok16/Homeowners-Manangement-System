@@ -260,29 +260,29 @@
 
 /**
  * Pay Hoa
- */
-function calculateMonths() {
-  var fromMonth = document.getElementById('fromMonth').value;
-  var fromYear = document.getElementById('fromYear').value;
-  var toMonth = document.getElementById('toMonth').value;
-  var toYear = document.getElementById('toYear').value;
+//  */
+// function calculateMonths() {
+//   var fromMonth = document.getElementById('fromMonth').value;
+//   var fromYear = document.getElementById('fromYear').value;
+//   var toMonth = document.getElementById('toMonth').value;
+//   var toYear = document.getElementById('toYear').value;
 
-  if (fromMonth && fromYear && toMonth && toYear) {
-      var fromDate = new Date(fromYear, fromMonth - 1); // Month is 0-based
-      var toDate = new Date(toYear, toMonth - 1); // Month is 0-based
+//   if (fromMonth && fromYear && toMonth && toYear) {
+//       var fromDate = new Date(fromYear, fromMonth - 1); // Month is 0-based
+//       var toDate = new Date(toYear, toMonth - 1); // Month is 0-based
 
-      var diffMonths = (toDate.getFullYear() - fromDate.getFullYear()) * 12;
-      diffMonths -= fromDate.getMonth() + 1;
-      diffMonths += toDate.getMonth() + 1;
+//       var diffMonths = (toDate.getFullYear() - fromDate.getFullYear()) * 12;
+//       diffMonths -= fromDate.getMonth() + 1;
+//       diffMonths += toDate.getMonth() + 1;
 
-      // Fetch the price based on user payments (you may need to modify this logic)
-      var price = parseInt(document.getElementById('price').innerText);
+//       // Fetch the price based on user payments (you may need to modify this logic)
+//       var price = parseInt(document.getElementById('price').innerText);
 
-      // Calculate payment amount based on lot area, price, and accumulated months
-      var lotArea = parseInt(document.getElementById('lotArea').innerText);
-      var paymentAmount = lotArea * price * diffMonths;
+//       // Calculate payment amount based on lot area, price, and accumulated months
+//       var lotArea = parseInt(document.getElementById('lotArea').innerText);
+//       var paymentAmount = lotArea * price * diffMonths;
 
-      // Update the payment amount field
-      document.getElementById('payment-amount').value = paymentAmount;
-  }
-}
+//       // Update the payment amount field
+//       document.getElementById('payment-amount').value = paymentAmount;
+//   }
+// }
