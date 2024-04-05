@@ -20,7 +20,7 @@
           <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Payment</a>
           <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
             <li>
-              <a tabindex="-1" href="#" class="dropdown-item">HOA Dues</a>
+              <a tabindex="-1" href="./create_hoa_dues.view.php" class="dropdown-item">CREATE HOA Dues</a>
             </li>
 
             <!-- Level three dropdown -->

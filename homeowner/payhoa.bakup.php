@@ -1,6 +1,12 @@
+<?php include("partial/navbar.php");?>
+<?php include("partial/header.php");?>
+<?php include("partial/sidebar.php");?>
+
+
+
 <div class="container">
     <h2>HOA Dues Payment Form</h2>
-    <form method="POST" action="payhoa-action.php">
+    <form method="POST" action="php/payhoa-action.php">
     <input type="hidden" name="transactionDateTime" value="<?php echo $currentDateTime; ?>">
         <label for="lotArea">Lot Area (sqm):</label>
         <span name="lotArea" id="lotArea"><?php echo htmlspecialchars($lotArea); ?></span><br>

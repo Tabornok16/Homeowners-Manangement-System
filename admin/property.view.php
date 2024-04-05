@@ -50,7 +50,7 @@
                             <tr>
                                 <th>Property ID</th>
                                 <th>Name</th>
-                                <th>Jeast ID</th>
+                                <th>Monthly Dues</th>
                                 <th>Lot Area</th>
                                 <th>Jeast Address</th>
                                 <th>Action</th>
@@ -65,7 +65,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                <!-- Footer -->
+                Footer
             </div>
             <!-- /.card-footer-->
         </div>
@@ -87,42 +87,57 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="addPropertyForm">
-                    <div class="form-group">
-                        <label for="propertyId">Property ID:</label>
-                        <input type="text" class="form-control" id="propertyId" name="propertyId">
-                    </div>
-                    <div class="form-group">
-                        <label for="userId">Home    owner:</label>
-                        <select class="form-control" id="userId" name="userId">
-                            <option value="">Select Homeowner</option>
-                            <?php
-                            // Query to fetch users from the database
-                            $query = "SELECT user_id, firstname, lastname FROM user";
-                            $result = $conn->query($query);
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row['firstname'] . ' ' . $row['lastname'] . '">' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
-                                }
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="jeastId">Jeast ID:</label>
-                        <input type="text" class="form-control" id="jeastId" name="jeastId">
-                    </div>
-                    <div class="form-group">
-                        <label for="lotArea">Lot Area:</label>
-                        <input type="text" class="form-control" id="lotArea" name="lotArea">
-                    </div>
-                    <div class="form-group">
-                        <label for="jeastAddress">Jeast Address:</label>
-                        <input type="text" class="form-control" id="jeastAddress" name="jeastAddress">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
+    <form id="addPropertyForm">
+        <div class="form-group">
+            <label for="propertyId">Property ID:</label>
+            <input type="text" class="form-control" id="propertyId" name="propertyId">
+        </div>
+        <div class="form-group">
+            <label for="userId">Homeowner:</label>
+            <select class="form-control" id="userId" name="userId">
+                <option value="">Select Homeowner</option>
+                <?php
+                // Query to fetch users from the database
+                $query = "SELECT user_id, firstname, lastname FROM user";
+                $result = $conn->query($query);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<option value="' . $row['firstname'] . ' ' . $row['lastname'] . '">' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
+                    }
+                }
+                ?>
+            </select>
+        </div>
+        <div class="form-group">
+            <label id="hoaDuesLabel">
+                <?php
+                // Query to fetch HOA dues from the database
+                $query = "SELECT * FROM setprice WHERE category = 'HOA DUES'";
+                $result = $conn->query($query);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo  'PRICE PER SQM: ' . $row['price'];
+                    }
+                }
+                ?>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="lotArea">Lot Area:</label>
+            <input type="text" class="form-control" id="lotArea" name="lotArea">
+        </div>
+        <div class="form-group">
+            <label for="jeastAddress">Jeast Address:</label>
+            <input type="text" class="form-control" id="jeastAddress" name="jeastAddress">
+        </div>
+        <div class="form-group">
+            <label for="monthly_dues">Monthly Dues:</label>
+            <input type="text" class="form-control" id="monthly_dues" name="monthly_dues" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
         </div>
     </div>
 </div>
@@ -146,7 +161,7 @@
                     "data": "user_id"
                 },
                 {
-                    "data": "jeast_id"
+                    "data": "monthly_dues"
                 },
                 {
                     "data": "lotArea"
@@ -203,5 +218,30 @@
             // Perform delete action here, e.g., show confirmation dialog and delete the entry
             console.log('Delete clicked for property ID:', propertyId);
         });
+    });
+</script>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get elements
+        const lotAreaInput = document.getElementById("lotArea");
+        const hoaDuesLabel = document.getElementById("hoaDuesLabel");
+        const monthlyDuesInput = document.getElementById("monthly_dues");
+
+        // Function to calculate monthly dues
+        function calculateMonthlyDues() {
+            const lotArea = parseFloat(lotAreaInput.value);
+            const hoaDues = parseFloat(hoaDuesLabel.textContent.split(":")[1].trim());
+            const monthlyDues = lotArea * hoaDues;
+
+            // Update the monthly dues input field
+            monthlyDuesInput.value = isNaN(monthlyDues) ? "" : monthlyDues.toFixed(2);
+        }
+
+        // Add event listeners
+        lotAreaInput.addEventListener("input", calculateMonthlyDues);
+        hoaDuesLabel.addEventListener("change", calculateMonthlyDues);
     });
 </script>
