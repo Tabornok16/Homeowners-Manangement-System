@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2024 at 04:45 PM
+-- Generation Time: Apr 06, 2024 at 01:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,8 +51,9 @@ INSERT INTO `category` (`id`, `category`) VALUES
 CREATE TABLE `property` (
   `id` int(11) NOT NULL,
   `prop_id` varchar(255) NOT NULL,
-  `user_id` varchar(255) NOT NULL,
-  `jeast_id` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `homeowner` varchar(255) NOT NULL,
+  `monthly_dues` int(255) NOT NULL,
   `lotArea` float NOT NULL,
   `jeastAdd` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -61,10 +62,16 @@ CREATE TABLE `property` (
 -- Dumping data for table `property`
 --
 
-INSERT INTO `property` (`id`, `prop_id`, `user_id`, `jeast_id`, `lotArea`, `jeastAdd`) VALUES
-(12, 'EA22412412', 'Jay Velandres', '001', 25, 'qweqweqw'),
-(13, 'EA213213', 'Jay Velandres', '213', 213, 'qweqwe'),
-(14, 'EA55555', 'Joyce Wendy', '213', 213, 'qweqwe');
+INSERT INTO `property` (`id`, `prop_id`, `user_id`, `homeowner`, `monthly_dues`, `lotArea`, `jeastAdd`) VALUES
+(12, 'EA22412412', 0, 'Jay Velandres', 1, 25, 'qweqweqw'),
+(13, 'EA213213', 0, 'Jay Velandres', 213, 213, 'qweqwe'),
+(14, 'EA55555', 0, 'Joyce Wendy', 213, 213, 'qweqwe'),
+(15, 'EA017010', 0, 'Jhoane Luna', 0, 270, 'BLOCK 17 LOT 10'),
+(16, '12312312', 0, 'john paul', 555, 32, '23'),
+(17, 'EA22225', 0, 'Joyce Wendy', 1620, 270, 'test'),
+(18, 'EA22226', 5, 'Ramon Ang', 3120, 520, 'test'),
+(19, 'EA0000000000', 5, 'Ramon Ang', 3000, 500, 'test'),
+(20, 'EA111111111', 14, 'Raymond Ibanez', 7200, 1200, 'JP rizal street blk1 lot 28');
 
 -- --------------------------------------------------------
 
@@ -89,7 +96,6 @@ CREATE TABLE `setprice` (
 --
 
 INSERT INTO `setprice` (`tx_id`, `date`, `category`, `subcategory`, `type`, `subtype`, `unitStakeholder`, `price`, `action`) VALUES
-(1, '2024-03-29 16:00:00', 'HOA Dues', 'N/A', 'N/A', 'N/A', 'sqm', '6', ''),
 (2, '2024-03-29 16:00:00', 'Miscellaneous', 'construction', 'processing-fee', 'house-fence', 'owner', '30000', ''),
 (3, '2024-03-29 16:00:00', 'Miscellaneous', 'construction', 'processing-fee', 'minor-renovation', 'owner', '5000', ''),
 (4, '2024-03-29 16:00:00', 'Miscellaneous', 'construction', 'bond', 'house-fence', 'owner', '200000', ''),
@@ -110,7 +116,7 @@ INSERT INTO `setprice` (`tx_id`, `date`, `category`, `subcategory`, `type`, `sub
 (19, '2024-03-29 16:00:00', 'Miscellaneous', 'reservation', 'clubhouse', 'N/A', 'owner', '5000', ''),
 (20, '2024-03-29 16:00:00', 'Miscellaneous', 'reservation', 'tennis', 'N/A', 'N/A', '150', ''),
 (21, '2024-03-29 16:00:00', 'Miscellaneous', 'reservation', 'bball', 'N/A', 'uncategorized', '150', ''),
-(22, '2024-03-29 16:00:00', 'HOA Dues', 'NA', 'NA', 'NA', 'SQM', '7', ''),
+(22, '2024-03-29 16:00:00', 'HOA Dues', 'NA', 'NA', 'NA', 'SQM', '6', ''),
 (23, '2024-04-02 08:58:37', '1', '2', 'test', 'test', '5', '555', NULL),
 (24, '2024-04-02 09:00:03', 'Construction', 'Construction', '123', '123', 'Owner', '555', NULL),
 (25, '2024-04-02 09:01:02', 'Construction', 'RFID', 'qwe', 'qwe', 'Square per meter', '222', NULL),
@@ -147,12 +153,63 @@ INSERT INTO `stakeholder` (`id`, `stakeholder`) VALUES
 
 CREATE TABLE `transaction` (
   `tx_id` int(11) NOT NULL,
+  `tx_no` varchar(255) NOT NULL,
   `tx_date` datetime DEFAULT NULL,
-  `particular` varchar(255) NOT NULL,
-  `period` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `verification` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`tx_id`, `tx_no`, `tx_date`, `amount`, `verification`) VALUES
+(1, '', '0000-00-00 00:00:00', 15240, ''),
+(2, '213123', '2024-04-05 00:00:00', 27360, ''),
+(3, '123123', '2024-04-05 00:00:00', 39840, ''),
+(4, '5513251', '2024-04-05 00:00:00', 24240, ''),
+(5, '', '2024-04-05 00:00:00', 27360, ''),
+(8, '123', '2024-04-05 00:00:00', 3120, ''),
+(12, '213213', '2024-04-05 00:00:00', 28800, ''),
+(13, '213123', '2024-04-05 00:00:00', 12480, ''),
+(14, '', '2024-04-05 00:00:00', 57600, ''),
+(15, '', '2024-04-05 00:00:00', 27360, ''),
+(16, '', '2024-04-05 00:00:00', 50400, ''),
+(17, '', '2024-04-05 00:00:00', 50400, ''),
+(18, '', '2024-04-05 00:00:00', 50400, ''),
+(19, '123213', '2024-04-05 00:00:00', 36000, ''),
+(20, '213213', '2024-04-05 00:00:00', 28800, ''),
+(21, '123213', '2024-04-05 00:00:00', 9360, ''),
+(22, '123213', '2024-04-05 00:00:00', 36000, ''),
+(23, '123213', '2024-04-05 00:00:00', 36000, ''),
+(24, '123213', '2024-04-05 00:00:00', 36000, ''),
+(25, '123213', '2024-04-05 00:00:00', 36000, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction_particulars`
+--
+
+CREATE TABLE `transaction_particulars` (
+  `id` int(11) NOT NULL,
+  `tx_id` varchar(255) NOT NULL,
+  `tx_no` varchar(255) NOT NULL,
+  `particular` varchar(255) NOT NULL,
+  `fromDate` varchar(255) NOT NULL,
+  `toDate` varchar(255) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `verification` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaction_particulars`
+--
+
+INSERT INTO `transaction_particulars` (`id`, `tx_id`, `tx_no`, `particular`, `fromDate`, `toDate`, `amount`, `verification`) VALUES
+(1, '23', '123213', 'EA111111111', '2024-02', '2024-06', 7200, ''),
+(2, '24', '123213', 'EA111111111', '2024-02', '2024-06', 7200, ''),
+(3, '25', '123213', 'EA111111111', '2024-02', '2024-06', 7200, '');
 
 -- --------------------------------------------------------
 
@@ -226,6 +283,12 @@ ALTER TABLE `transaction`
   ADD PRIMARY KEY (`tx_id`);
 
 --
+-- Indexes for table `transaction_particulars`
+--
+ALTER TABLE `transaction_particulars`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -245,7 +308,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `setprice`
@@ -263,7 +326,13 @@ ALTER TABLE `stakeholder`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `tx_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tx_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `transaction_particulars`
+--
+ALTER TABLE `transaction_particulars`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`

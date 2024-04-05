@@ -93,20 +93,22 @@
             <input type="text" class="form-control" id="propertyId" name="propertyId">
         </div>
         <div class="form-group">
-            <label for="userId">Homeowner:</label>
-            <select class="form-control" id="userId" name="userId">
-                <option value="">Select Homeowner</option>
-                <?php
-                // Query to fetch users from the database
-                $query = "SELECT user_id, firstname, lastname FROM user";
-                $result = $conn->query($query);
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<option value="' . $row['firstname'] . ' ' . $row['lastname'] . '">' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
-                    }
-                }
-                ?>
-            </select>
+            <label for="homeowner">Homeowner:</label>
+            <select class="form-control" id="homeowner" name="homeowner">
+    <option value="">Select Homeowner</option>
+    <?php
+    // Query to fetch users from the database
+    $query = "SELECT user_id, firstname, lastname FROM user";
+    $result = $conn->query($query);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            // Concatenate user_id, first name, and last name
+            $option_value = $row['user_id'] . '|' . $row['firstname'] . ' ' . $row['lastname'];
+            echo '<option value="' . $option_value . '">' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
+        }
+    }
+    ?>
+</select>
         </div>
         <div class="form-group">
             <label id="hoaDuesLabel">
