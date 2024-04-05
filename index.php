@@ -120,7 +120,7 @@
             <p>
             Let HOME guide you through its key features and benefits, making it the essential tool for efficient, secure, and hassle-free homeowner management. Discover how HOME can revolutionize your HOA operations and take your homeowner association to new heights.
             </p>
-            <a href="#" class="btn-learn-more">Learn More</a>
+            <a href="#services" class="btn-learn-more">Learn More</a>
           </div>
         </div>
 
@@ -290,7 +290,7 @@
             <p> Take charge of your community living experience today! Explore our Homeowner Management Essentials to streamline registration, understand HOA dues, access exclusive amenities, report maintenance issues seamlessly, and adhere to community guidelines. Empower yourself as a responsible homeowner and contribute to a thriving community environment.</p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#">Call To Action</a>
+            <a class="cta-btn align-middle" href="#contact">Call To Action</a>
           </div>
         </div>
 

@@ -176,7 +176,7 @@
             <div class="inner">
               <h3>8</h3>
 
-              <p>Total Number of Reservation/p>
+              <p>Total Number of Reservation</p>
             </div>
             <div class="icon">
             <i class="fas fa-calendar-check"></i>
