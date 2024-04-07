@@ -44,18 +44,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="./profile.php" class="nav-link">
+            <a href="./profile.view.php" class="nav-link">
             <i class="nav-icon fas fa-user"></i><!-- Changed from "far fa-image" to "fas fa-users" for users -->
               <p>
                 Profile
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="./new_page.view.php" class="nav-link">
-            <i class="nav-icon fas fa-user"></i><!-- Changed from "far fa-image" to "fas fa-users" for users -->
-              <p>
-                NEW PAGE
               </p>
             </a>
           </li>
