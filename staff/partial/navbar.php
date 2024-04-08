@@ -27,8 +27,8 @@
             <li class="dropdown-submenu">
               <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Miscellaneous</a>
               <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
-                <li><a href="pay.rfid.php" class="dropdown-item">RFID</a></li>
-                <li><a href="#" class="dropdown-item">Car Sticker</a></li>
+                <li><a href="rfid.php" class="dropdown-item">RFID</a></li>
+                <li><a href="carsticker.php" class="dropdown-item">Car Sticker</a></li>
                 <li><a href="#" class="dropdown-item">Reservation</a></li>
                 <li><a href="#" class="dropdown-item">Penalty</a></li>
                 <li class="dropdown-submenu"> <!-- New dropdown submenu for "Construction" -->
