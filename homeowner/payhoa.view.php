@@ -1,7 +1,6 @@
-<?php include("partial/navbar.php");?>
-<?php include("partial/header.php");?>
-<?php include("partial/sidebar.php");?>
-<?php include ("../connect2.php"); ?>
+<?php include("partial/header.php"); ?>
+<?php include("partial/navbar.php"); ?>
+<?php include("partial/sidebar.php"); ?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -45,30 +44,13 @@
                                             ?>
                                     </div>
                                     <div class="form-group col-md-2">
-                                    <!-- <label for="tx_no">TX #</label> -->
-                                    <span>
-                                        <?php
-                                        // Fetch the highest transaction number from the database
-                                        // $query = "SELECT MAX(tx_no) AS max_tx_no FROM transaction;";
-                                        // $result = $db->query($query);
-
-                                        // if ($result && $result->num_rows > 0) {
-                                        //     $row = $result->fetch_assoc();
-                                            // Increment the highest transaction number by 1
-                                        //     $next_tx_no = $row['max_tx_no'] + 1;
-                                        // } else {
-                                            // If no transactions exist, start with 1
-                                        //     $next_tx_no = 1;
-                                        // }
-                                        // echo $next_tx_no; // Output the auto-generated transaction number
-                                        // ?>
-                                    </span>
-                                </div>
-
-                                    <span class="form-group col-md-2">
+                                        <label for="tx_no">TX #</label>
+                                        <input type="text" class="form-control" id="tx_no" name="tx_no" required>
+                                    </div>
+                                    <div class="form-group col-md-2">
                                         <label for="tx_date">DATE</label>
                                         <input type="text" class="form-control" id="tx_date" name="tx_date" readonly>
-                                        </span>
+                                    </div>
                                     <!-- Modal for selecting existing vendors -->
                                     <div class="modal" id="vendorModal" tabindex="-1" role="dialog"
                                         aria-labelledby="vendorModalLabel" aria-hidden="true">
@@ -76,7 +58,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
 
-                                                    <!-- <h5 class="modal-title" id="vendorModalLabel">Select Homeowner</a> -->
+                                                    <h5 class="modal-title" id="vendorModalLabel">Select Homeowner</a>
                                                     </h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -94,28 +76,7 @@
                                             id="propertyTable">
                                             <thead>
                                                 <tr>
-                                                <th>PROPERTY ID</th>
-                                                        <?php
-                                                        // Check if the user is logged in and the session variable is set
-                                                        if (isset($_SESSION['user_id'])) {
-                                                            $user_id = $_SESSION['user_id'];
-                                                            
-                                                            // Fetch prop_id values for the logged-in user from the database
-                                                            $query = "SELECT prop_id FROM property WHERE user_id = $user_id;";
-                                                            $result = $db->query($query);
-
-                                                            if ($result && $result->num_rows > 0) {
-                                                                while ($row = $result->fetch_assoc()) {
-                                                                    echo "<td>{$row['prop_id']}</td>";
-                                                                }
-                                                            } else {
-                                                                echo "<td>No properties found</td>";
-                                                            }
-                                                        } else {
-                                                            echo "<td>User not logged in</td>";
-                                                        }
-                                                        ?>
-
+                                                    <th>PROPERTY ID</th>
                                                     <th>MONTHLY DUES</th>
                                                     <th>FROM</th>
                                                     <th>TO</th>
