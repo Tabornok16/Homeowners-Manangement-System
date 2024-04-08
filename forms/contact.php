@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO emailform (name, email, subject, message) 
             VALUES ('$name', '$email', '$subject', '$message')";
 
-    if ($conn->query($sql) === TRUE) {
+    if ($conn->query($sql) === TRUE) { 
         // Send email
         if (mail($to, $subject, $message, $headers)) {
             echo "Email sent successfully.";
