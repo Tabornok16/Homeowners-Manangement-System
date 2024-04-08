@@ -14,7 +14,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
-                        <li class="breadcrumb-item active">Property</li>
+                        <li class="breadcrumb-item active">User Verification</li>
                     </ol>
                 </div>
             </div>
@@ -27,7 +27,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Title</h3>
+                <h3 class="card-title">Users Verification</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -54,6 +54,7 @@
                             <th>Last Name</th>
                             <th>User Type</th>
                             <th>Gender</th>
+                            <th>Marital Status</th>
                             <th>Email</th>
                             <th>Phone Number</th>
                             <th>Mailing Address</th>
@@ -126,6 +127,17 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="status">Marital Status:</label>
+                        <select class="form-control" id="status" name="status">
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Widow">Widow</option>
+                            <option value="Divorce">Divorce</option>
+                            <option value="Seperated">Seperated</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="birthday">Birthday:</label>
                         <input type="date" class="form-control" id="birthday" name="birthday" placeholder="mm/dd/yyyy">
                     </div>
@@ -184,6 +196,9 @@
                     "data": "gender"
                 },
                 {
+                    "data": "status"
+                },
+                {
                     "data": "email"
                 },
                 {
@@ -200,9 +215,9 @@
                 },
                 {
                     "data": null,
-                    "render": function(data, type, row) {
-                        return '<button class="edit-btn" data-id="' + row.userID + '">Edit</button> <button class="delete-btn" data-id="' + row.userID + '">Delete</button>';
-                    }
+"render": function(data, type, row) {
+    return '<button class="edit-btn" data-id="' + row.userID + '" style="display: inline-block;">Edit</button> <button class="view-btn" data-id="' + row.userID + '" style="display: inline-block;">View</button>';
+}
                 }
             ],
             "buttons": [
@@ -217,11 +232,11 @@
             console.log('Edit clicked for user ID:', userId);
         });
 
-        // Handle click event for delete button
-        $('#userTable').on('click', '.delete-btn', function() {
+        // Handle click event for view button
+        $('#userTable').on('click', '.view-btn', function() {
             var userId = $(this).data('id');
-            // Perform delete action here, e.g., show confirmation dialog and delete the user
-            console.log('Delete clicked for user ID:', userId);
+            // Perform view action here, e.g., show confirmation dialog and view the user
+            console.log('View clicked for user ID:', userId);
         });
 
         // Submit form via Ajax

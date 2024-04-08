@@ -54,6 +54,7 @@
                             <th>Last Name</th>
                             <th>User Type</th>
                             <th>Gender</th>
+                            <th>Marital Status</th>
                             <th>Email</th>
                             <th>Phone Number</th>
                             <th>Mailing Address</th>
@@ -69,7 +70,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                Footer
+               
             </div>
             <!-- /.card-footer-->
         </div>
@@ -121,6 +122,17 @@
                         <select class="form-control" id="gender" name="gender">
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Marital Status:</label>
+                        <select class="form-control" id="status" name="status">
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Widow">Widow</option>
+                            <option value="Divorce">Divorce</option>
+                            <option value="Seperated">Seperated</option>
                             <option value="Other">Other</option>
                         </select>
                     </div>
@@ -183,6 +195,9 @@
                     "data": "gender"
                 },
                 {
+                    "data": "status"
+                },
+                {
                     "data": "email"
                 },
                 {
@@ -200,7 +215,7 @@
                 {
                     "data": null,
                     "render": function(data, type, row) {
-                        return '<button class="edit-btn" data-id="' + row.userID + '">Edit</button> <button class="delete-btn" data-id="' + row.userID + '">Delete</button>';
+                        return '<button class="edit-btn" data-id="' + row.userID + '">Edit</button> <button class="view-btn" data-id="' + row.userID + '">View</button>';
                     }
                 }
             ],
@@ -216,11 +231,11 @@
             console.log('Edit clicked for user ID:', userId);
         });
 
-        // Handle click event for delete button
-        $('#userTable').on('click', '.delete-btn', function() {
+        // Handle click event for View button
+        $('#userTable').on('click', '.view-btn', function() {
             var userId = $(this).data('id');
-            // Perform delete action here, e.g., show confirmation dialog and delete the user
-            console.log('Delete clicked for user ID:', userId);
+            // Perform view action here, e.g., show confirmation dialog and view the user
+            console.log('View clicked for user ID:', userId);
         });
 
         // Submit form via Ajax

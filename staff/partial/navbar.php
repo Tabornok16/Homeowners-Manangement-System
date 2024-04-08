@@ -9,7 +9,7 @@
       <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><strong>Transaction</strong></a>
       <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
 
-        <li><a href="#" class="dropdown-item">Homeowner Verification</a></li>
+        <li><a href="user.view.php" class="dropdown-item">Homeowner Verification</a></li>
         <li><a href="#" class="dropdown-item">Posting Announcement</a></li>
         <!-- <li><a href="./invoice.php" class="dropdown-item">Invoice</a></li> -->
 
@@ -27,7 +27,7 @@
             <li class="dropdown-submenu">
               <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Miscellaneous</a>
               <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
-                <li><a href="#" class="dropdown-item">RFID</a></li>
+                <li><a href="pay.rfid.php" class="dropdown-item">RFID</a></li>
                 <li><a href="#" class="dropdown-item">Car Sticker</a></li>
                 <li><a href="#" class="dropdown-item">Reservation</a></li>
                 <li><a href="#" class="dropdown-item">Penalty</a></li>

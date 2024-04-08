@@ -9,7 +9,7 @@
       <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><strong>Transaction</strong></a>
       <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
 
-        <li><a href="#" class="dropdown-item">Homeowner Verification</a></li>
+        <li><a href="user.view.php" class="dropdown-item">Users Verification</a></li>
         <li><a href="#" class="dropdown-item">Posting Announcement</a></li>
         <li><a href="./invoice.php" class="dropdown-item">Invoice</a></li>
 
@@ -20,7 +20,7 @@
           <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Payment</a>
           <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
             <li>
-              <a tabindex="-1" href="#" class="dropdown-item">HOA Dues</a>
+              <a tabindex="-1" href="create_hoa_dues.view.php" class="dropdown-item">HOA Dues</a>
             </li>
 
             <!-- Level three dropdown -->
