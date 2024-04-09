@@ -9,23 +9,39 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>RFID Payment</h1>
+                    <h1>RFID Application Form</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
-                        <li class="breadcrumb-item active">RFID Payment</li>
+                        <li class="breadcrumb-item active">RFID Application Form</li>
                     </ol>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-        <form action="transactions.php" method="POST">
-            <label for="rfid">RFID Code:</label>
-            <input type="text" id="rfid" name="rfid" required>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body">
+            <form action="transactions.php" method="POST">
+            <!-- <label for="rfid">RFID Code:</label>
+            <input type="text" id="rfid" name="rfid" required> -->
             <label for="cOwner">Registered Car Owner:</label>
             <input type="text" id="cOwner" name="cOwner" required>
+
+            <label for="validId">Driver License or Any Valid ID of the Owner:</label>
+            <input type="file" id="validId" name="validId" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
+            <br><br>
+
             <label for="cOwner">Plate Number:</label>
             <input type="text" id="pNumber" name="pNumber" required><br><br>
+
+            <label for="carSticker">Car Sticker Number:</label>
+            <input type="text" id="carSticker" name="carSticker" required><br><br>
 
             <label for="cBrand">Car Brand:</label>
             <select id="cBrandSelect" name="cBrand" required onchange="toggleTextInput('cBrandSelect', 'cBrandText')">
@@ -47,7 +63,7 @@
                 <option value="Hatchback">Hatchback</option>
                 <option value="Other">Other</option>
             </select>
-            <input type="text" id="cColorText" name="cColor" style="display: none;" placeholder="Enter Other Car Color"><br><br>
+            <input type="text" id="cTypeText" name="cType" style="display: none;" placeholder="Enter Other Car Type"><br><br>
 
             <label for="cColor">Car Color:</label>
             <select id="cColorSelect" name="cColor" required onchange="toggleTextInput('cColorSelect', 'cColorText')">
@@ -58,12 +74,12 @@
                 <option value="blue">Blue</option>
                 <option value="Other">Other</option>
             </select>
-            <input type="text" id="cTypeText" name="cType" style="display: none;" placeholder="Enter Other Car Type"><br><br>
+            <input type="text" id="cColorText" name="cColor" style="display: none;" placeholder="Enter Other Car Color"><br><br>
 
 
 
-            <label for="amount">Amount:</label>
-            <span id="amount" name="amount" required></span><br><br>
+            <!-- <label for="amount">Amount:</label>
+            <span id="amount" name="amount" required></span><br><br> -->
 
             <label for="refNum">Payment Reference Number:</label>
             <input type="text" id="refNum" name="refNum" required><br><br>
@@ -71,7 +87,7 @@
             <label for="requestor">Fullname of Requestor:</label>
             <input type="text" id="requestor" name="requestor" required><br><br>
 
-            <button type="submit">Submit</button>
+            <button type="submit">Submit Application</button>
         </form>
 
         <script>
@@ -103,16 +119,6 @@
                     .catch(error => console.error('Error:', error));
             }
         </script>
-
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-        <!-- Default box -->
-        <div class="card">
-            <div class="card-body">
-
             </div>
             <!-- /.card-body -->
             <div class="card-footer">

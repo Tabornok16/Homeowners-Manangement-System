@@ -47,7 +47,7 @@
                 <option value="Hatchback">Hatchback</option>
                 <option value="Other">Other</option>
             </select>
-            <input type="text" id="cColorText" name="cColor" style="display: none;" placeholder="Enter Other Car Color"><br><br>
+            <input type="text" id="cBrandText" name="cBrand" style="display: none;" placeholder="Enter Other Car Type"><br><br>
 
             <label for="cColor">Car Color:</label>
             <select id="cColorSelect" name="cColor" required onchange="toggleTextInput('cColorSelect', 'cColorText')">
@@ -58,7 +58,7 @@
                 <option value="blue">Blue</option>
                 <option value="Other">Other</option>
             </select>
-            <input type="text" id="cTypeText" name="cType" style="display: none;" placeholder="Enter Other Car Type"><br><br>
+            <input type="text" id="cColorText" name="cColor" style="display: none;" placeholder="Enter Other Car Color"><br><br>
 
 
 

@@ -60,7 +60,7 @@
                 <option value="Hatchback">Hatchback</option>
                 <option value="Other">Other</option>
             </select>
-            <input type="text" id="cColorText" name="cColor" style="display: none;" placeholder="Enter Other Car Color"><br><br>
+            <input type="text" id="cTypeText" name="cType" style="display: none;" placeholder="Enter Other Car Type"><br><br>
 
             <label for="cColor">Car Color:</label>
             <select id="cColorSelect" name="cColor" required onchange="toggleTextInput('cColorSelect', 'cColorText')">
@@ -71,7 +71,7 @@
                 <option value="blue">Blue</option>
                 <option value="Other">Other</option>
             </select>
-            <input type="text" id="cTypeText" name="cType" style="display: none;" placeholder="Enter Other Car Type"><br><br>
+            <input type="text" id="cColorText" name="cColor" style="display: none;" placeholder="Enter Other Car Color"><br><br>
 
             <label for="officialReceipt">Upload Official Receipt (OR):</label>
             <input type="file" id="officialReceipt" name="officialReceipt" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
