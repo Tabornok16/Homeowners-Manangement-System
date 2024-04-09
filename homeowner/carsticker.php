@@ -19,7 +19,15 @@
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-        <form action="transactions.php" method="POST">
+
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body">
+            <form action="transactions.php" method="POST">
             <!-- <label for="sNum">Sticker Number:</label>
             <input type="text" id="sNum" name="sNum" required> -->
             <label for="cOwner">Registered Car Owner:</label>
@@ -116,14 +124,6 @@
             }
         </script>
     </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-        <!-- Default box -->
-        <div class="card">
-            <div class="card-body">
-
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
