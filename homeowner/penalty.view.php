@@ -9,12 +9,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Issuing Penalty</h1>
+                    <h1>View Penalty</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
-                        <li class="breadcrumb-item active">Penalty</li>
+                        <li class="breadcrumb-item active">View Penalty</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +25,7 @@
     <section class="content">
 
         <!-- Default box -->
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-body">
             <form action="issue_penalty_process.php" method="POST">
             <label for="homeowner">Homeowner Name or ID:</label>
@@ -49,7 +49,7 @@
             <br><br>
 
             <button type="submit">Issue Penalty</button>
-        </form>
+        </form> -->
 
             </div>
             <!-- /.card-body -->
