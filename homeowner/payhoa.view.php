@@ -130,9 +130,6 @@
 <!-- /.content-wrapper -->
 
 
-
-<?php include ('partial/footer.php') ?>
-
 <script>
     $(document).ready(function () {
 
