@@ -1,6 +1,7 @@
-<?php include("partial/header.php");?>
-<?php include("partial/navbar.php");?>
-<?php include("partial/sidebar.php");?>
+<?php include('partial/header.php'); ?>
+<?php include('partial/navbar.php'); ?>
+<?php include('partial/sidebar.php'); ?>
+<?php include('../connect.php'); ?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -48,7 +49,7 @@
                     // Proceed with using $verification variable or perform other operations
                 } else {
                     // Handle the case when 'verification' key is not set in the array
-                    echo "Verification not available.";
+                    echo "";
                 }
                 
 
@@ -77,10 +78,13 @@
                         echo "<td>" . $row["verification"] . "</td>";
                         echo "<td>";
                 
-                        echo "<a href='uupdate.php?id=" . $row["user_id"] . "'>Update</a> | ";
-                        echo "<a href='javascript:void(0);' onclick='confirmView(" . $row["user_id"] . ")'>View</a> | ";
-                        echo "<a href='javascript:void(0);' onclick='updateVerification(" . $row["user_id"] . ", \"Verified\")'>Verified</a> | ";
-                        echo "<a href='javascript:void(0);' onclick='updateVerification(" . $row["user_id"] . ", \"Unverified\")'>Unverified</a>";
+                        echo "<td>";
+                        echo "<a href='uupdate.php?id=" . $row["user_id"] . "' class='btn btn-primary mr-1'>Update</a>";
+                        echo "<a href='javascript:void(0);' onclick='confirmView(" . $row["user_id"] . ")' class='btn btn-info mr-1'>View</a>";
+                        echo "<a href='javascript:void(0);' onclick='updateVerification(" . $row["user_id"] . ", \"Verified\")' class='btn btn-success mr-1'>Verified</a>";
+                        echo "<a href='javascript:void(0);' onclick='updateVerification(" . $row["user_id"] . ", \"Unverified\")' class='btn btn-danger'>Unverified</a>";
+                        echo "</td>";
+
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -120,7 +124,7 @@
                     });
                 }
 
-                function updateVerification(userId, status) {
+                function updateVerification(userId, status, button) {
                     // Send an AJAX request to update the verification status
                     // Example using jQuery:
                     $.ajax({
@@ -131,6 +135,15 @@
                             // Handle success response
                             alert('Verification status updated successfully.');
                             // Reload or update the table as needed
+                            if (status === 'Verified') {
+                                button.classList.remove('btn-danger');
+                                button.classList.add('btn-success');
+                                button.innerText = 'Verified';
+                            } else {
+                                button.classList.remove('btn-success');
+                                button.classList.add('btn-danger');
+                                button.innerText = 'Unverified';
+                            }
                         },
                         error: function(xhr, status, error) {
                             // Handle error
@@ -154,5 +167,4 @@
 </div>
 <!-- /.content-wrapper -->
 
-
-<?php include('partial/footer.php') ?>
+<?php include('partial/footer.php'); ?>
