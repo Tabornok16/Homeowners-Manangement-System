@@ -226,3 +226,4 @@
 </script>
 
 
+<?php include('partial/footer.php') ?>

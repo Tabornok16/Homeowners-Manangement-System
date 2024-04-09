@@ -52,7 +52,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="./calendar.php" class="nav-link">
+            <a href="./calendar.view.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-alt"></i> <!-- Changed from "far fa-image" to "fas fa-home" for property -->
               <p>
                 Calendar
