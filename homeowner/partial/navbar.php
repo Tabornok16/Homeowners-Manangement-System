@@ -10,7 +10,7 @@
       <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
 
         <li><a href="#" class="dropdown-item">Announcement</a></li>
-        <li><a href="#" class="dropdown-item">Inquiry</a></li>
+        <li><a href="inquiry.php" class="dropdown-item">Inquiry</a></li>
 
 
 
