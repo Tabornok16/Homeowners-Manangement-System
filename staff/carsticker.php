@@ -19,60 +19,90 @@
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-        <form action="transactions.php" method="POST">
-            <label for="sNum">Sticker Number:</label>
-            <input type="text" id="sNum" name="sNum" required>
-            <label for="cOwner">Registered Car Owner:</label>
-            <input type="text" id="cOwner" name="cOwner" required>
-            <label for="cOwner">Plate Number:</label>
-            <input type="text" id="pNumber" name="pNumber" required><br><br>
+     <!-- Main content -->
+     <section class="content">
 
-            <label for="cBrand">Car Brand:</label>
-            <select id="cBrandSelect" name="cBrand" required onchange="toggleTextInput('cBrandSelect', 'cBrandText')">
-                <option value="" disabled selected>Select Car Brand</option>
-                <option value="Toyota">Toyota</option>
-                <option value="Honda">Honda</option>
-                <option value="Ford">Ford</option>
-                <option value="Chevrolet">Chevrolet</option>
-                <option value="Other">Other</option>
-            </select>
-            <input type="text" id="cBrandText" name="cBrand" style="display: none;" placeholder="Enter Other Car Brand"><br><br>
+<!-- Default box -->
+<div class="card">
+    <div class="card-body">
+    <form action="transactions.php" method="POST">
+    <!-- <label for="sNum">Sticker Number:</label>
+    <input type="text" id="sNum" name="sNum" required> -->
+    <div class="container" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; font-family: Arial, sans-serif;">
+<h2 style="font-size: 24px; margin-bottom: 20px; text-align: center;">Car Registration Application</h2>
+<form action="car-registration-action.php" method="POST" enctype="multipart/form-data">
 
-            <label for="cType">Car Type:</label>
-            <select id="cTypeSelect" name="cType" required onchange="toggleTextInput('cTypeSelect', 'cTypeText')">
-                <option value="" disabled selected>Select Car Type</option>
-                <option value="Sedan">Sedan</option>
-                <option value="SUV">SUV</option>
-                <option value="Truck">Truck</option>
-                <option value="Hatchback">Hatchback</option>
-                <option value="Other">Other</option>
-            </select>
-            <input type="text" id="cColorText" name="cColor" style="display: none;" placeholder="Enter Other Car Color"><br><br>
+<label for="sNum">Sticker Number:</label>
+<input type="text" id="sNum" name="sNum" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">	
 
-            <label for="cColor">Car Color:</label>
-            <select id="cColorSelect" name="cColor" required onchange="toggleTextInput('cColorSelect', 'cColorText')">
-                <option value="" disabled selected>Select Car Color</option>
-                <option value="red">Red</option>
-                <option value="white">White</option>
-                <option value="black">Black</option>
-                <option value="blue">Blue</option>
-                <option value="Other">Other</option>
-            </select>
-            <input type="text" id="cTypeText" name="cType" style="display: none;" placeholder="Enter Other Car Type"><br><br>
+<!-- Registered Car Owner -->
+<label for="cOwner" style="display: block; margin-bottom: 10px;">Registered Car Owner:</label>
+<input type="text" id="cOwner" name="cOwner" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
 
+<!-- Driver License or Valid ID -->
+<label for="validId" style="display: block; margin-bottom: 10px;">Driver License or Any Valid ID of the Owner:</label>
+<input type="file" id="validId" name="validId" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required style="margin-bottom: 15px;">
 
+<!-- Plate Number -->
+<label for="pNumber" style="display: block; margin-bottom: 10px;">Plate Number:</label>
+<input type="text" id="pNumber" name="pNumber" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
 
-            <label for="amount">Amount:</label>
-            <span id="amount" name="amount" required></span><br><br>
+<!-- Car Brand -->
+<label for="cBrandSelect" style="display: block; margin-bottom: 5px;">Car Brand:</label>
+<select id="cBrandSelect" name="cBrand" required onchange="toggleTextInput('cBrandSelect', 'cBrandText')" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+    <option value="" disabled selected>Select Car Brand</option>
+    <option value="Toyota">Toyota</option>
+    <option value="Honda">Honda</option>
+    <option value="Ford">Ford</option>
+    <option value="Chevrolet">Chevrolet</option>
+    <option value="Other">Other</option>
+</select>
+<input type="text" id="cBrandText" name="cBrand" style="display: none; width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" placeholder="Enter Other Car Brand">
 
-            <label for="refNum">Payment Reference Number:</label>
-            <input type="text" id="refNum" name="refNum" required><br><br>
+<!-- Car Type -->
+<label for="cTypeSelect" style="display: block; margin-bottom: 5px;">Car Type:</label>
+<select id="cTypeSelect" name="cType" required onchange="toggleTextInput('cTypeSelect', 'cTypeText')" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+    <option value="" disabled selected>Select Car Type</option>
+    <option value="Sedan">Sedan</option>
+    <option value="SUV">SUV</option>
+    <option value="Truck">Truck</option>
+    <option value="Hatchback">Hatchback</option>
+    <option value="Other">Other</option>
+</select>
+<input type="text" id="cTypeText" name="cType" style="display: none; width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" placeholder="Enter Other Car Type">
 
-            <label for="requestor">Fullname of Requestor:</label>
-            <input type="text" id="requestor" name="requestor" required><br><br>
+<!-- Car Color -->
+<label for="cColorSelect" style="display: block; margin-bottom: 5px;">Car Color:</label>
+<select id="cColorSelect" name="cColor" required onchange="toggleTextInput('cColorSelect', 'cColorText')" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+    <option value="" disabled selected>Select Car Color</option>
+    <option value="red">Red</option>
+    <option value="white">White</option>
+    <option value="black">Black</option>
+    <option value="blue">Blue</option>
+    <option value="Other">Other</option>
+</select>
+<input type="text" id="cColorText" name="cColor" style="display: none; width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" placeholder="Enter Other Car Color">
 
-            <button type="submit">Submit</button>
-        </form>
+<!-- Upload Official Receipt (OR) -->
+<label for="officialReceipt" style="display: block; margin-bottom: 10px;">Upload Official Receipt (OR):</label>
+<input type="file" id="officialReceipt" name="officialReceipt" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required style="margin-bottom: 15px;">
+
+<!-- Upload Car Registration (CR) -->
+<label for="carRegistration" style="display: block; margin-bottom: 10px;">Upload Car Registration (CR):</label>
+<input type="file" id="carRegistration" name="carRegistration" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required style="margin-bottom: 15px;">
+
+<!-- Payment Reference Number -->
+<label for="refNum" style="display: block; margin-bottom: 10px;">Payment Reference Number:</label>
+<input type="text" id="refNum" name="refNum" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+
+<!-- Fullname of Requestor -->
+<label for="requestor" style="display: block; margin-bottom: 10px;">Fullname of Requestor:</label>
+<input type="text" id="requestor" name="requestor" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+
+<!-- Submit Button -->
+<button type="submit" style="background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 10px 20px; cursor: pointer; font-size: 16px;">Submit Application</button>
+</form>
+</div>
 
         <script>
             // Fetch the price using AJAX when the RFID code is entered
