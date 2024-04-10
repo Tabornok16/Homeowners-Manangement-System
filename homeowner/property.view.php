@@ -104,7 +104,7 @@
         while ($row = $result->fetch_assoc()) {
             // Concatenate user_id, first name, and last name
             $option_value = $row['user_id'] . '|' . $row['firstname'] . ' ' . $row['lastname'];
-            echo '<option value="' . $option_value . '">' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
+            echo '<option value="' . $option_value . '" selected>' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
         }
     }
     ?>
