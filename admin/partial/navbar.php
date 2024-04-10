@@ -57,7 +57,7 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <li class="nav-item mr-lg-3">
-    <a class="nav-link" href="calendar.php" style="font-size: 18px;">
+    <a class="nav-link" href="./calendar.view.php" style="font-size: 18px;">
             <i class="ion-calendar"></i>
         <?php
           date_default_timezone_set('Asia/Manila');

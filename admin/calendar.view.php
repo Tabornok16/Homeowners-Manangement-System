@@ -1,30 +1,33 @@
-<?php include("partial/navbar.php");?>
 <?php include("partial/header.php");?>
+<?php include("partial/navbar.php");?>
 <?php include("partial/sidebar.php");?>
 
-
-
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Calendar</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-              <li class="breadcrumb-item active">Calendar</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid
-    </section>-->
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Calendar</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
+                        <li class="breadcrumb-item active">Calendar</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
 
     <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body">
+                <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -100,7 +103,23 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <?php include("partial/footer.php");?>
+
+  <!--<footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.2.0
+    </div>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  </footer>-->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+
 <script>
   $(function () {
 
@@ -224,6 +243,19 @@
     })
   })
 </script>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <!-- Footer -->
+            </div>
+            <!-- /.card-footer-->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 
 <?php include('partial/footer.php') ?>
