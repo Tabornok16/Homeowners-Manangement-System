@@ -12,8 +12,6 @@
         <li><a href="#" class="dropdown-item">Announcement</a></li>
         <li><a href="inquiry.php" class="dropdown-item">Inquiry</a></li>
 
-
-
         <!-- Level two dropdown-->
         <li class="dropdown-submenu dropdown-hover">
           <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Payment</a>
