@@ -25,51 +25,57 @@
         
 
         <!-- Default box -->
-        <div class="card">
-        <form action="reservation_process.php" method="POST">
-            <label for="facility">Facility:</label>
-            <select id="facility" name="facility" required>
-                <option value="" disabled selected>Select Facility</option>
-                <option value="Basketball Court">Basketball Court</option>
-                <option value="Lawn Tennis Court">Lawn Tennis Court</option>
-                <option value="Function Room">Function Room</option>
-                <option value="Clubhouse">Clubhouse</option>
-                <option value="Swimming Pool">Swimming Pool</option>
-            </select>
+        <div class="card" style="width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; font-family: Arial, sans-serif;">
+    <form action="reservation_process.php" method="POST">
+        <!-- Facility -->
+        <label for="facility" style="display: block; margin-bottom: 10px;">Facility:</label>
+        <select id="facility" name="facility" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+            <option value="" disabled selected>Select Facility</option>
+            <option value="Basketball Court">Basketball Court</option>
+            <option value="Lawn Tennis Court">Lawn Tennis Court</option>
+            <option value="Function Room">Function Room</option>
+            <option value="Clubhouse">Clubhouse</option>
+            <option value="Swimming Pool">Swimming Pool</option>
+        </select>
 
-            <label for="requestorFullName">Fullname of Requestor:</label>
-            <input type="text" id="requestorFullName" name="requestorFullName" required placeholder="Enter your fullname">
-            <br><br>
+        <!-- Fullname of Requestor -->
+        <label for="requestorFullName" style="display: block; margin-bottom: 10px;">Fullname of Requestor:</label>
+        <input type="text" id="requestorFullName" name="requestorFullName" required placeholder="Enter your fullname" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
 
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required>
+        <!-- Date and Time -->
+        <label for="date" style="display: block; margin-bottom: 10px;">Date:</label>
+        <input type="date" id="date" name="date" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
 
-            <label for="time">Time:</label>
-            <input type="time" id="time" name="time" required>
+        <label for="time" style="display: block; margin-bottom: 10px;">Time:</label>
+        <input type="time" id="time" name="time" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
 
-            <label for="privileges">Privileges:</label>
-            <input type="checkbox" id="member" name="privileges[]" value="Member">
-            <label for="member">Member</label>
-            <input type="checkbox" id="vip" name="privileges[]" value="VIP">
-            <label for="vip">VIP</label><br>
+        <!-- Privileges -->
+        <label for="privileges" style="display: block; margin-bottom: 10px;">Privileges:</label>
+        <input type="checkbox" id="member" name="privileges[]" value="Member" style="margin-right: 5px;">
+        <label for="member">Member</label>
+        <input type="checkbox" id="vip" name="privileges[]" value="VIP" style="margin-right: 5px;">
+        <label for="vip">VIP</label><br>
 
-            <label for="notes">Notes:</label><br>
-            <textarea id="notes" name="notes" rows="4" cols="50" placeholder="Enter any special notes"></textarea><br><br>
+        <!-- Notes -->
+        <label for="notes" style="display: block; margin-bottom: 10px;">Notes:</label>
+        <textarea id="notes" name="notes" rows="4" cols="50" placeholder="Enter any special notes" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"></textarea>
 
-            <label for="guests">List of Guests:</label><br>
-            <textarea id="guests" name="guests" rows="4" cols="50" placeholder="Enter names of guests"></textarea>
-            <br><br>
+        <!-- List of Guests -->
+        <label for="guests" style="display: block; margin-bottom: 10px;">List of Guests:</label>
+        <textarea id="guests" name="guests" rows="4" cols="50" placeholder="Enter names of guests" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"></textarea>
 
-            <label for="guestListImage">Upload Guest List Image:</label>
-            <input type="file" id="guestListImage" name="guestListImage" accept="image/*">
-            <br><br>
+        <!-- Upload Guest List Image -->
+        <label for="guestListImage" style="display: block; margin-bottom: 10px;">Upload Guest List Image:</label>
+        <input type="file" id="guestListImage" name="guestListImage" accept="image/*" style="margin-bottom: 15px;">
 
-            <label for="paymentRef">Payment Reference Number:</label>
-            <input type="text" id="paymentRef" name="paymentRef" placeholder="Enter Payment Reference Number">
-            <br><br>
+        <!-- Payment Reference Number -->
+        <!-- <label for="paymentRef" style="display: block; margin-bottom: 10px;">Payment Reference Number:</label>
+        <input type="text" id="paymentRef" name="paymentRef" placeholder="Enter Payment Reference Number" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"> -->
 
-            <button type="submit">Reserve</button>
-        </form>
+        <!-- Submit Button -->
+        <button type="submit" style="background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 10px 20px; cursor: pointer; font-size: 16px;">Reserve</button>
+    </form>
+</div>
 
     </section>
 
