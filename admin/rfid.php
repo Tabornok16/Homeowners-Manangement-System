@@ -30,7 +30,7 @@
     <div class="card">
             <div class="card-body">
             <div class="container" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; font-family: Arial, sans-serif;">
-    <h2 style="font-size: 24px; margin-bottom: 20px; text-align: center;">Car Registration Application</h2>
+    <h2 style="font-size: 24px; margin-bottom: 20px; text-align: center;">Car RFID Registration Application</h2>
     <form action="transactions.php" method="POST">
         
         <!-- RFID CODE -->

@@ -29,7 +29,7 @@
     <!-- <label for="sNum">Sticker Number:</label>
     <input type="text" id="sNum" name="sNum" required> -->
     <div class="container" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; font-family: Arial, sans-serif;">
-<h2 style="font-size: 24px; margin-bottom: 20px; text-align: center;">Car Registration Application</h2>
+<h2 style="font-size: 24px; margin-bottom: 20px; text-align: center;">Car Sticker Registration Application</h2>
 <form action="car-registration-action.php" method="POST" enctype="multipart/form-data">
 
 <label for="sNum">Sticker Number:</label>
