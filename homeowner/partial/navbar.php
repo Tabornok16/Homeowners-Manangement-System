@@ -24,7 +24,7 @@
                 <li class="dropdown-submenu">
                   <a id="dropdownSubMenu4" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Construction</a>
                   <ul aria-labelledby="dropdownSubMenu4" class="dropdown-menu border-0 shadow">
-                    <li><a href="#" class="dropdown-item">Processing Fee</a></li>
+                    <li><a href="processing_fee.php" class="dropdown-item">Processing Fee</a></li>
                     <li><a href="#" class="dropdown-item">Bond</a></li>
                     <li><a href="#" class="dropdown-item">Delivery Fee</a></li>
                     <li><a href="#" class="dropdown-item">Worker's ID</a></li>
