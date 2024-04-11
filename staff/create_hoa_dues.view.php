@@ -191,10 +191,13 @@
                     // Handle success response
                     console.log(response);
                     if (response.success) {
-                        // Show success message or redirect to another page
-                        alert("Transaction submitted successfully");
-                        // Redirect to another page if needed
-                        // window.location.href = "success.php";
+                        // Show success message
+                        toastr.success('Transaction saved!', '', {
+                            onHidden: function () {
+                                // Reload the page after hiding the toast
+                                location.reload();
+                            }
+                        });
                     } else {
                         // Show error message
                         alert("Failed to submit transaction");
@@ -219,24 +222,24 @@
                 var monthsDifference = (toDate.getFullYear() - fromDate.getFullYear()) * 12 + toDate.getMonth() - fromDate.getMonth() + 1;
                 var amount = monthlyDues * monthsDifference;
                 row.find('.amount').val(amount.toFixed(2));
-                
+
                 return amount;
             }
             return 0;
         }
 
         // Function to calculate total amount due for all properties
- // Function to calculate total amount due for all properties
-function calculateTotalAmountDue() {
-    var totalAmountDue = 0;
-    $('.amount').each(function () {
-        var amount = parseFloat($(this).val());
-        if (!isNaN(amount)) {
-            totalAmountDue += amount;
+        // Function to calculate total amount due for all properties
+        function calculateTotalAmountDue() {
+            var totalAmountDue = 0;
+            $('.amount').each(function () {
+                var amount = parseFloat($(this).val());
+                if (!isNaN(amount)) {
+                    totalAmountDue += amount;
+                }
+            });
+            $('#totalAmountDue').val(totalAmountDue.toFixed(2));
         }
-    });
-    $('#totalAmountDue').val(totalAmountDue.toFixed(2));
-}
 
         $('#vendor').change(function () {
             var userId = $(this).val(); // Get the selected user_id
