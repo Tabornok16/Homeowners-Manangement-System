@@ -8,7 +8,7 @@
     <li class="nav-item dropdown">
       <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Transaction</a>
       <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-        <li><a href="#" class="dropdown-item">Announcement</a></li>
+        <!-- <li><a href="#" class="dropdown-item">Announcement</a></li> -->
         <li><a href="inquiry.php" class="dropdown-item">Inquiry</a></li>
         <li class="dropdown-submenu dropdown-hover">
           <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Payment</a>
