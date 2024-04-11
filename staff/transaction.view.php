@@ -2,6 +2,7 @@
 <?php include("partial/navbar.php"); ?>
 <?php include("partial/sidebar.php"); ?>
 
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -61,3 +62,8 @@
 <!-- /.content-wrapper -->
 
 <?php include('partial/footer.php'); ?>
+
+<?php
+// Assuming you have already established the database connection above
+include('php/get_transaction.view.php'); 
+?>
