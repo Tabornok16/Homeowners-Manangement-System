@@ -21,7 +21,8 @@
                 <li><a href="rfid.php" class="dropdown-item">RFID</a></li>
                 <li><a href="reservation.php" class="dropdown-item">Reservation</a></li>
                 <li><a href="penalty.view.php" class="dropdown-item">View Penalty</a></li>
-                <li class="dropdown-submenu">
+
+                <!-- <li class="dropdown-submenu">
                   <a id="dropdownSubMenu4" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Construction</a>
                   <ul aria-labelledby="dropdownSubMenu4" class="dropdown-menu border-0 shadow">
                     <li><a href="processing_fee.php" class="dropdown-item">Processing Fee</a></li>
@@ -29,7 +30,7 @@
                     <li><a href="#" class="dropdown-item">Delivery Fee</a></li>
                     <li><a href="#" class="dropdown-item">Worker's ID</a></li>
                   </ul>
-                </li>
+                </li> -->
                 <li><a href="inquiry.php" class="dropdown-item">Other</a></li>
               </ul>
             </li>
