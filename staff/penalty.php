@@ -27,32 +27,42 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-body">
-            <form action="issue_penalty_process.php" method="POST">
-            <label for="homeowner">Homeowner Name or ID:</label>
-            <input type="text" id="homeowner" name="homeowner" required placeholder="Enter homeowner's name or ID">
-            <br><br>
+                <div style="display: flex; justify-content: center;">
+                    <form action="issue_penalty_process.php" method="POST" style="width: 80%;">
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-weight: bold;" for="homeowner">Homeowner Name or ID:</label>
+                            <input style="width: 100%; max-width: 400px; padding: 8px; border-radius: 4px; border: 1px solid #ccc;" type="text" id="homeowner" name="homeowner" required placeholder="Enter homeowner's name or ID">
+                        </div>
 
-            <label for="reason">Reason for Penalty:</label><br>
-            <textarea id="reason" name="reason" rows="4" cols="50" required placeholder="Enter reason for penalty"></textarea>
-            <br><br>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-weight: bold;" for="reason">Reason for Penalty:</label>
+                            <textarea style="width: 100%; max-width: 400px; padding: 8px; border-radius: 4px; border: 1px solid #ccc;" id="reason" name="reason" rows="4" cols="50" required placeholder="Enter reason for penalty"></textarea>
+                        </div>
 
-            <label for="amount">Penalty Amount:</label>
-            <input type="number" id="amount" name="amount" min="0" step="0.01" required placeholder="Enter penalty amount">
-            <br><br>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-weight: bold;" for="amount">Penalty Amount:</label>
+                            <input style="width: 100%; max-width: 400px; padding: 8px; border-radius: 4px; border: 1px solid #ccc;" type="number" id="amount" name="amount" min="0" step="0.01" required placeholder="Enter penalty amount">
+                        </div>
 
-            <label for="notes">Additional Notes:</label><br>
-            <textarea id="notes" name="notes" rows="4" cols="50" placeholder="Enter any additional notes"></textarea>
-            <br><br>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-weight: bold;" for="notes">Additional Notes:</label>
+                            <textarea style="width: 100%; max-width: 400px; padding: 8px; border-radius: 4px; border: 1px solid #ccc;" id="notes" name="notes" rows="4" cols="50" placeholder="Enter any additional notes"></textarea>
+                        </div>
 
-            <label for="penaltyLetter">Upload Formal Penalty Letter:</label>
-            <input type="file" id="penaltyLetter" name="penaltyLetter" accept=".pdf,.doc,.docx" required>
-            <br><br>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-weight: bold;" for="penaltyLetter">Upload Formal Penalty Letter:</label>
+                            <input style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: auto;" type="file" id="penaltyLetter" name="penaltyLetter" accept=".pdf,.doc,.docx" required>
+                        </div>
 
-            <button type="submit">Issue Penalty</button>
-        </form>
-
+                        <div>
+                            <button style="background-color: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;" type="submit">Issue Penalty</button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <!-- /.card-body -->
+        </div>
+
             <div class="card-footer">
                 <!-- Footer -->
             </div>

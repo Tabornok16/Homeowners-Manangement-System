@@ -31,15 +31,14 @@
                 <li><a href="carsticker.php" class="dropdown-item">Car Sticker</a></li>
                 <li><a href="reservation.php" class="dropdown-item">Reservation</a></li>
                 <li><a href="penalty.php" class="dropdown-item">Penalty</a></li>
-                <li class="dropdown-submenu"> <!-- New dropdown submenu for "Construction" -->
-                  <a id="dropdownSubMenu4" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Construction</a>
+                <li class="dropdown-submenu"> 
+                  <!-- <a id="dropdownSubMenu4" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Construction</a>
                   <ul aria-labelledby="dropdownSubMenu4" class="dropdown-menu border-0 shadow">
                     <li><a href="#" class="dropdown-item">Processing Fee</a></li>
                     <li><a href="#" class="dropdown-item">Bond</a></li>
                     <li><a href="#" class="dropdown-item">Delivery Fee</a></li>
                     <li><a href="#" class="dropdown-item">Worker's ID</a></li>
-                    <!-- Add more construction-related items as needed -->
-                  </ul>
+                  </ul> -->
                 </li>
                 <li><a href="#" class="dropdown-item">Other</a></li>
               </ul>
