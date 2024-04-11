@@ -105,15 +105,26 @@
                 </div>
                 <div class="modal-body">
                     <!-- Payment form -->
-                    <form action="process_payment.php" method="POST" enctype="multipart/form-data">
+                    <form action="#" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="paymentAmount">PHP Amount:</label>
                             <input type="text" class="form-control" id="paymentAmount" name="paymentAmount" value="<?php echo $amount; ?>" readonly>
                         </div>
-                        <div class="form-group">
+
+                        <?php
+                        // Construct the payment message
+                        $paymentMessage = "Payment for $value under $subcategory - $type - $subtype by $unitStakeholder.";
+                        ?>
+
+                        <!-- Display the payment message -->
+                        <div class="alert alert-info" role="alert">
+                            <?php echo $paymentMessage; ?>
+                        </div>
+
+                        <!-- <div class="form-group">
                             <label for="paymentCategory">Category:</label>
                             <input type="text" class="form-control" id="paymentCategory" name="paymentCategory" value="<?php echo $value; ?>" readonly>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="paymentReference">Reference Number:</label>
                             <input type="text" class="form-control" id="paymentReference" name="paymentReference">
