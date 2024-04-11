@@ -40,9 +40,9 @@
             </div>
             <div class="card-body">
                 <!-- Button to trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPropertyModal">
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPropertyModal">
                     Add Property
-                </button>
+                </button> -->
                 <br><br>
                 <div class="table-responsive">
                     <table id="propertyTable" class="table table-hover table-bordered table-striped dataTable dtr-inline collapsed">
