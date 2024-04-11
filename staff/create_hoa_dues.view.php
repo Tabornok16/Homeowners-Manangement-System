@@ -162,7 +162,7 @@
     var toDates = [];
     $('#propertyTableBody tr').each(function () {
         var propertyID = $(this).find('input[name="particular[]"]').val();
-        var amount = $(this).find('input[name="monthlyDues[]"]').val();
+        var amount = $(this).find('input[name="amount[]"]').val();
         var fromDate = $(this).find('input[name="fromDate[]"]').val();
         var toDate = $(this).find('input[name="toDate[]"]').val();
 

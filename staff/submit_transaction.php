@@ -9,9 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $db->beginTransaction();
 
         // Check if necessary form fields are set and not empty
-        if(isset($_POST['propertyIDs']) && isset($_POST['amount']) && isset($_POST['fromDate']) && isset($_POST['toDate'])) {
+        if (isset($_POST['propertyIDs']) && isset($_POST['amount']) && isset($_POST['fromDate']) && isset($_POST['toDate'])) {
             // Retrieve form data
             $tx_no = $_POST['tx_no'];
+            $user_id = $_POST['vendor'];
             $tx_date = $_POST['tx_date'];
             $totalAmountDue = $_POST['totalAmountDue'];
             // $propertyIDs = $_POST['propertyIDs']; // Array of property IDs
@@ -20,14 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // $amounts = $_POST['amount']; // Array of amounts
 
             // Decode JSON strings into arrays
-$propertyIDs = json_decode($_POST['propertyIDs']);
-$fromDates = json_decode($_POST['fromDate']);
-$toDates = json_decode($_POST['toDate']);
-$amounts = json_decode($_POST['amount']);
+            $propertyIDs = json_decode($_POST['propertyIDs']);
+            $fromDates = json_decode($_POST['fromDate']);
+            $toDates = json_decode($_POST['toDate']);
+            $amounts = json_decode($_POST['amount']);
 
             // Insert transaction data into the database
-            $transactionQuery = "INSERT INTO transaction (tx_no, tx_date, amount) VALUES (:tx_no, :tx_date, :totalAmountDue)";
+            $transactionQuery = "INSERT INTO transaction (tx_no, homeowner, tx_date, amount) VALUES (:tx_no, :user_id, :tx_date, :totalAmountDue)";
             $transactionStatement = $db->prepare($transactionQuery);
+            $transactionStatement->bindParam(':user_id', $user_id);
             $transactionStatement->bindParam(':tx_no', $tx_no);
             $transactionStatement->bindParam(':tx_date', $tx_date);
             $transactionStatement->bindParam(':totalAmountDue', $totalAmountDue);

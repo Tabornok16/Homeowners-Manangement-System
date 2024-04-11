@@ -50,6 +50,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="./transaction.view.php" class="nav-link">
+              <i class="nav-icon fas fa-home"></i> <!-- Changed from "far fa-image" to "fas fa-home" for property -->
+              <p>
+                Transaction List
+              </p>
+            </a>
+          </li>
 
           <li class="nav-item">
             <a href="./calendar.view.php" class="nav-link">
