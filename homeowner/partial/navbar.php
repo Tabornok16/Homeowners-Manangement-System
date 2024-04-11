@@ -30,7 +30,7 @@
                     <li><a href="#" class="dropdown-item">Worker's ID</a></li>
                   </ul>
                 </li>
-                <li><a href="#" class="dropdown-item">Other</a></li>
+                <li><a href="inquiry.php" class="dropdown-item">Other</a></li>
               </ul>
             </li>
           </ul>
