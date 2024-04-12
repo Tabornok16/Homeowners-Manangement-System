@@ -72,15 +72,15 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="./calendar.view.php" class="nav-link">
             <i class="nav-icon fas fa-calendar-alt"></i>
-            <!-- Changed from "far fa-image" to "fas fa-home" for property -->
+            Changed from "far fa-image" to "fas fa-home" for property
             <p>
               Calendar
             </p>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link show-multilevel-sidebar">
             <i class="nav-icon fas fa-th"></i>
