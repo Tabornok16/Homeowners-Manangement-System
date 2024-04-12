@@ -80,7 +80,7 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-    
+
 
                                             </div>
                                         </div>
@@ -152,64 +152,94 @@
     $(document).ready(function () {
 
         $('#submitButton').click(function () {
-    // Serialize form data
-    var formData = $('#hoaForm').serialize();
+            // Serialize form data
+            var formData = $('#hoaForm').serialize();
 
-    // Get additional data for properties
-    var propertyIDs = [];
-    var amounts = [];
-    var fromDates = [];
-    var toDates = [];
-    $('#propertyTableBody tr').each(function () {
-        var propertyID = $(this).find('input[name="particular[]"]').val();
-        var amount = $(this).find('input[name="monthlyDues[]"]').val();
-        var fromDate = $(this).find('input[name="fromDate[]"]').val();
-        var toDate = $(this).find('input[name="toDate[]"]').val();
+            // Get additional data for properties
+            var propertyIDs = [];
+            var amounts = [];
+            var fromDates = [];
+            var toDates = [];
+            $('#propertyTableBody tr').each(function () {
+                var propertyID = $(this).find('input[name="particular[]"]').val();
+                var amount = $(this).find('input[name="amount[]"]').val();
+                var fromDate = $(this).find('input[name="fromDate[]"]').val();
+                var toDate = $(this).find('input[name="toDate[]"]').val();
 
-        propertyIDs.push(propertyID);
-        amounts.push(amount);
-        fromDates.push(fromDate);
-        toDates.push(toDate);
-    });
+                propertyIDs.push(propertyID);
+                amounts.push(amount);
+                fromDates.push(fromDate);
+                toDates.push(toDate);
+            });
 
-    // Append additional data to formData
-    formData += '&propertyIDs=' + JSON.stringify(propertyIDs);
-    formData += '&amount=' + JSON.stringify(amounts);
-    formData += '&fromDate=' + JSON.stringify(fromDates);
-    formData += '&toDate=' + JSON.stringify(toDates);
+            // Append additional data to formData
+            formData += '&propertyIDs=' + JSON.stringify(propertyIDs);
+            formData += '&amount=' + JSON.stringify(amounts);
+            formData += '&fromDate=' + JSON.stringify(fromDates);
+            formData += '&toDate=' + JSON.stringify(toDates);
 
-    // Log serialized form data to console
-    console.log("Serialized Form Data:", formData);
+            // Log serialized form data to console
+            console.log("Serialized Form Data:", formData);
 
-    // Send AJAX request
-    $.ajax({
-        url: $('#hoaForm').attr('action'),
-        method: 'POST',
-        data: formData,
-        dataType: 'json',
-        success: function (response) {
-            // Handle success response
-            console.log(response);
-            if (response.success) {
-                // Show success message or redirect to another page
-                alert("Transaction submitted successfully");
-                // Redirect to another page if needed
-                // window.location.href = "success.php";
-            } else {
-                // Show error message
-                alert("Failed to submit transaction");
+            // Send AJAX request
+            $.ajax({
+                url: $('#hoaForm').attr('action'),
+                method: 'POST',
+                data: formData,
+                dataType: 'json',
+                success: function (response) {
+                    // Handle success response
+                    console.log(response);
+                    if (response.success) {
+                        // Show success message
+                        toastr.success('Transaction saved!', '', {
+                            onHidden: function () {
+                                // Reload the page after hiding the toast
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        // Show error message
+                        alert("Failed to submit transaction");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.error(error);
+                    // Log MySQL error message to console
+                    console.log("MySQL error: " + xhr.responseText);
+                    // Display MySQL error message in alert
+                    alert("Error occurred while submitting transaction. Please check the console for details.");
+                }
+            });
+        });
+        // Function to calculate amount for a single property
+        function calculatePropertyAmount(row) {
+            var fromDate = new Date(row.find('.fromDate').val());
+            var toDate = new Date(row.find('.toDate').val());
+            var monthlyDues = parseFloat(row.find('.monthlyDues').val());
+            if (!isNaN(monthlyDues)) {
+                var monthsDifference = (toDate.getFullYear() - fromDate.getFullYear()) * 12 + toDate.getMonth() - fromDate.getMonth() + 1;
+                var amount = monthlyDues * monthsDifference;
+                row.find('.amount').val(amount.toFixed(2));
+
+                return amount;
             }
-        },
-        error: function (xhr, status, error) {
-            // Handle error
-            console.error(error);
-            // Log MySQL error message to console
-            console.log("MySQL error: " + xhr.responseText);
-            // Display MySQL error message in alert
-            alert("Error occurred while submitting transaction. Please check the console for details.");
+            return 0;
         }
-    });
-});
+
+        // Function to calculate total amount due for all properties
+        // Function to calculate total amount due for all properties
+        function calculateTotalAmountDue() {
+            var totalAmountDue = 0;
+            $('.amount').each(function () {
+                var amount = parseFloat($(this).val());
+                if (!isNaN(amount)) {
+                    totalAmountDue += amount;
+                }
+            });
+            $('#totalAmountDue').val(totalAmountDue.toFixed(2));
+        }
 
         $('#vendor').change(function () {
             var userId = $(this).val(); // Get the selected user_id
@@ -226,7 +256,6 @@
 
                     // Loop through the retrieved properties and append rows to the table
                     $.each(response, function (index, property) {
-
                         // Log each property before appending to the table
                         console.log("Property:", property);
                         var row = '<tr>' +
@@ -246,29 +275,11 @@
             });
         });
 
-        // Calculate amount when dates are selected
+        // Calculate amount when dates are selected or changed
         $(document).on('change', '.fromDate, .toDate', function () {
             var row = $(this).closest('tr');
-            var fromDate = new Date(row.find('.fromDate').val());
-            var toDate = new Date(row.find('.toDate').val());
-            var monthlyDues = parseFloat(row.find('.monthlyDues').val());
-            if (!isNaN(monthlyDues)) {
-                var monthsDifference = (toDate.getFullYear() - fromDate.getFullYear()) * 12 + toDate.getMonth() - fromDate.getMonth() + 1;
-                var amount = monthlyDues * monthsDifference;
-                row.find('.amount').val(amount.toFixed(2));
-
-
-            }
+            var amount = calculatePropertyAmount(row);
             calculateTotalAmountDue();
-
-            // Function to calculate total amount due
-            function calculateTotalAmountDue() {
-                totalAmountDue = 0; // Reset total amount
-                $('.amount').each(function () {
-                    totalAmountDue += parseFloat($(this).val());
-                });
-                $('#totalAmountDue').val(totalAmountDue.toFixed(2));
-            }
         });
 
         // Get the current date
@@ -280,9 +291,6 @@
         // Set the formatted date as the value of the input field
         $('#tx_date').val(formattedDate);
 
-
-
     });
-
 
 </script>
