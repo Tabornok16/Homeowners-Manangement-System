@@ -56,7 +56,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="transaction.history.php" class="nav-link">
             <i class="nav-icon fas fa-exchange-alt"></i>
             <!-- Changed from "far fa-image" to "fas fa-exchange-alt" for transaction -->
             <p>
