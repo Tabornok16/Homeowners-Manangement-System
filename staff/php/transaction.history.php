@@ -53,9 +53,9 @@
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
                     </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <!-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
                         <i class="fas fa-times"></i>
-                    </button>
+                    </button> -->
                 </div>
             </div>
             <div class="card-body">
@@ -66,5 +66,3 @@
 
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
-
-<?php include 'partial/footer.php'; ?>
