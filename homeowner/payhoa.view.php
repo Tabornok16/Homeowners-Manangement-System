@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="admin\index.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
                         <li class="breadcrumb-item active">HOA Dues Payment Form</li>
                     </ol>
                 </div>
@@ -43,10 +43,10 @@
                                            } echo $_SESSION['firstname'] . " " . $_SESSION['lastname'];
                                             ?>
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <!-- <div class="form-group col-md-2">
                                         <label for="tx_no">TX #</label>
                                         <input type="text" class="form-control" id="tx_no" name="tx_no" required>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group col-md-2">
                                         <label for="tx_date">DATE</label>
                                         <input type="text" class="form-control" id="tx_date" name="tx_date" readonly>
@@ -228,9 +228,8 @@
             });
         });
 
-        // Calculate amount when dates are selected
-        $(document).on('change', '.fromDate, .toDate', function () {
-            var row = $(this).closest('tr');
+  // Function to calculate amount for a single property
+  function calculatePropertyAmount(row) {
             var fromDate = new Date(row.find('.fromDate').val());
             var toDate = new Date(row.find('.toDate').val());
             var monthlyDues = parseFloat(row.find('.monthlyDues').val());
@@ -239,18 +238,63 @@
                 var amount = monthlyDues * monthsDifference;
                 row.find('.amount').val(amount.toFixed(2));
 
-
+                return amount;
             }
+            return 0;
+        }
+
+        // Function to calculate total amount due for all properties
+        // Function to calculate total amount due for all properties
+        function calculateTotalAmountDue() {
+            var totalAmountDue = 0;
+            $('.amount').each(function () {
+                var amount = parseFloat($(this).val());
+                if (!isNaN(amount)) {
+                    totalAmountDue += amount;
+                }
+            });
+            $('#totalAmountDue').val(totalAmountDue.toFixed(2));
+        }
+
+        $('#vendor').change(function () {
+            var userId = $(this).val(); // Get the selected user_id
+            // Make AJAX request to fetch properties of selected homeowner
+            $.ajax({
+                url: 'php/get_open_properties.php', // PHP script to fetch properties
+                method: 'POST',
+                data: { userId: userId }, // Send the selected user_id to the PHP script
+                dataType: 'json',
+                success: function (response) {
+                    // Populate the property table with the retrieved data
+                    var tableBody = $('#propertyTableBody');
+                    tableBody.empty(); // Clear previous data
+
+                    // Loop through the retrieved properties and append rows to the table
+                    $.each(response, function (index, property) {
+                        // Log each property before appending to the table
+                        console.log("Property:", property);
+                        var row = '<tr>' +
+                            '<td><input type="text" name="particular[]" value="' + property.prop_id + '" disabled></td>' +
+                            '<td><input type="number" name="monthlyDues[]" class="form-control monthlyDues" value="' + property.monthly_dues + '"></td>' + // Hidden input for monthly dues
+                            '<td><input type="month" name="fromDate[]" class="form-control fromDate"></td>' + // Use type="month" for month input
+                            '<td><input type="month" name="toDate[]" class="form-control toDate"></td>' + // Use type="month" for month input
+                            '<td><input type="text" name="amount[]" class="amount" disabled></td>' + // Add class for "AMOUNT" input
+                            '</tr>';
+                        tableBody.append(row);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    // Handle errors
+                    console.error(error);
+                }
+            });
+        });
+
+        // Calculate amount when dates are selected or changed
+        $(document).on('change', '.fromDate, .toDate', function () {
+            var row = $(this).closest('tr');
+            var amount = calculatePropertyAmount(row);
             calculateTotalAmountDue();
-
-            // Function to calculate total amount due
-            function calculateTotalAmountDue() {
-                totalAmountDue = 0; // Reset total amount
-                $('.amount').each(function () {
-                    totalAmountDue += parseFloat($(this).val());
-                });
-                $('#totalAmountDue').val(totalAmountDue.toFixed(2));
-            }
         });
 
         // Get the current date
@@ -262,13 +306,9 @@
         // Set the formatted date as the value of the input field
         $('#tx_date').val(formattedDate);
 
-
-
     });
 
-
 </script>
-
 
 
 <?php include('partial/footer.php') ?>
