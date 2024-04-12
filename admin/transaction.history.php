@@ -1,6 +1,6 @@
-<?php include('partial/header.php'); ?>
-<?php include('partial/navbar.php'); ?>
-<?php include('partial/sidebar.php'); ?>
+<?php include 'partial/header.php'; ?>
+<?php include 'partial/navbar.php'; ?>
+<?php include 'partial/sidebar.php'; ?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -44,10 +44,6 @@
         </div>
 
 
-                <!-- Content of the first default box -->
-            </div>
-        </div>
-
         <!-- Second Default Box -->
         <div class="card"> <!-- No margin added to the last default box -->
             <div class="card-header">
@@ -63,7 +59,10 @@
                 </div>
             </div>
             <div class="card-body">
+                <?php include './php/get_transaction.particulars.php'; ?>
                 <!-- Content of the second default box -->
             </div>
         </div>
 
+    </section><!-- /.content -->
+</div><!-- /.content-wrapper -->
