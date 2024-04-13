@@ -42,7 +42,7 @@ $lastName = isset($lastName) ? $lastName : '';
                         <h2 style="font-size: 24px; margin-bottom: 10px;">Profile</h2>
                         <form action="profile-action.php" method="POST" enctype="multipart/form-data">
                             <!-- User Details -->
-                            <label for="username" style="display: block; margin-bottom: 5px;">Username:</label>
+                            <!-- <label for="username" style="display: block; margin-bottom: 5px;">Username:</label>
                             <input type="text" name="username" id="username" value="<?= isset($loggedInUsername) ? $loggedInUsername : '' ?>" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" disabled>
 
                             <label for="firstName" style="display: block; margin-bottom: 5px;">First Name:</label>
@@ -55,7 +55,7 @@ $lastName = isset($lastName) ? $lastName : '';
                             <select name="gender" id="gender" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
-                            </select>
+                            </select> -->
 
                             <!-- Additional Details -->
                             <hr style="margin-top: 20px; margin-bottom: 20px;">
