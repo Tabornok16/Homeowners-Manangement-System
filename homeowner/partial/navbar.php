@@ -13,7 +13,7 @@
         <li class="dropdown-submenu dropdown-hover">
           <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Payment</a>
           <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-            <li><a tabindex="-1" href="./payhoa.view.php" class="dropdown-item">HOA Dues</a></li>
+            <li><a tabindex="-1" href="./create_hoa_dues.view.php" class="dropdown-item">HOA Dues</a></li>
             <li class="dropdown-submenu">
               <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Miscellaneous</a>
               <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
