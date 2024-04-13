@@ -175,7 +175,7 @@
             var userId = $(this).val(); // Get the selected user_id
             // Make AJAX request to fetch properties of selected homeowner
             $.ajax({
-                url: 'php/get_open_properties.php', // PHP script to fetch properties
+                url: './././get_open_properties.php', // PHP script to fetch properties
                 method: 'POST',
                 data: { userId: userId }, // Send the selected user_id to the PHP script
                 dataType: 'json',
