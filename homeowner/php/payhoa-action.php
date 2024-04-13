@@ -1,8 +1,6 @@
 <?php
-include('partial/header.php');
-include('partial/sidebar.php');
+
 include('connect.php');
-include('navbar.php');
 
 
 

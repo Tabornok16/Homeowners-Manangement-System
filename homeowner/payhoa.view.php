@@ -31,7 +31,7 @@
                     <div class="card" style="background-color: #e5e5e5;">
                         <div class="card-body">
                             <!-- Sales Invoice Form -->
-                            <form id="hoaForm" action="submit_transaction.php" method="POST">
+                            <form id="hoaForm" action="payhoa-action.php" method="POST">
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
 
@@ -43,33 +43,11 @@
                                            } echo $_SESSION['firstname'] . " " . $_SESSION['lastname'];
                                             ?>
                                     </div>
-                                    <!-- <div class="form-group col-md-2">
-                                        <label for="tx_no">TX #</label>
-                                        <input type="text" class="form-control" id="tx_no" name="tx_no" required>
-                                    </div> -->
                                     <div class="form-group col-md-2">
                                         <label for="tx_date">DATE</label>
                                         <input type="text" class="form-control" id="tx_date" name="tx_date" readonly>
                                     </div>
-                                    <!-- Modal for selecting existing vendors -->
-                                    <div class="modal" id="vendorModal" tabindex="-1" role="dialog"
-                                        aria-labelledby="vendorModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
 
-                                                    <h5 class="modal-title" id="vendorModalLabel">Select Homeowner</a>
-                                                    </h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-    
-
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="table-responsive">
                                         <table
                                             class="table table-hover table-bordered table-striped dataTable dtr-inline collapsed"
