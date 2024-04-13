@@ -35,6 +35,7 @@
 
                                         <label for="vendor">HOMEOWNER</label>
                                         <select class="form-control" id="vendor" name="vendor">
+                                            <option value="" disabled selected>Select Homeowner</option>
                                             <?php
                                             // Fetch vendors from the database and populate the dropdown in the modal
                                             $query = "SELECT * FROM user WHERE userType = 3;";
