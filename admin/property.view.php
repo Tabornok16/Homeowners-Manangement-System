@@ -1,7 +1,7 @@
 <?php include('partial/header.php'); ?>
 <?php include('partial/navbar.php'); ?>
 <?php include('partial/sidebar.php'); ?>
-
+<?php include('../connect.php'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
                         <li class="breadcrumb-item active">Property</li>
                     </ol>
                 </div>
@@ -27,7 +27,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Title</h3>
+                <h3 class="card-title">Homeowners' Property List</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -44,26 +44,28 @@
                     Add Property
                 </button>
                 <br><br>
-                <table id="propertyTable" class="table table-bordered table-striped dataTable dtr-inline collapsed">
-                    <thead>
-                        <tr>
-                            <th>Property ID</th>
-                            <th>User ID</th>
-                            <th>Jeast ID</th>
-                            <th>Lot Area</th>
-                            <th>Jeast Address</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="table-responsive">
+                    <table id="propertyTable" class="table table-hover table-bordered table-striped dataTable dtr-inline collapsed">
+                        <thead>
+                            <tr>
+                                <th>Property ID</th>
+                                <th>Name</th>
+                                <th>Monthly Dues</th>
+                                <th>Lot Area</th>
+                                <th>Jeast Address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
 
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                Footer
+                
             </div>
             <!-- /.card-footer-->
         </div>
@@ -85,17 +87,82 @@
                 </button>
             </div>
             <div class="modal-body">
+<<<<<<< Updated upstream
+    <form id="addPropertyForm">
+        <div class="form-group">
+            <label for="propertyId">Property ID:</label>
+            <input type="text" class="form-control" id="propertyId" name="propertyId">
+        </div>
+        <div class="form-group">
+            <label for="userId">Homeowner:</label>
+            <select class="form-control" id="userId" name="userId">
+                <option value="">Select Homeowner</option>
+                <?php
+                // Query to fetch users from the database
+                $query = "SELECT user_id, firstname, lastname FROM user";
+                $result = $conn->query($query);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<option value="' . $row['firstname'] . ' ' . $row['lastname'] . '">' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
+                    }
+                }
+                ?>
+            </select>
+        </div>
+        <div class="form-group">
+            <label id="hoaDuesLabel">
+                <?php
+                // Query to fetch HOA dues from the database
+                $query = "SELECT * FROM setprice WHERE category = 'HOA DUES'";
+                $result = $conn->query($query);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo  'PRICE PER SQM: ' . $row['price'];
+                    }
+                }
+                ?>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="lotArea">Lot Area:</label>
+            <input type="text" class="form-control" id="lotArea" name="lotArea">
+        </div>
+        <div class="form-group">
+            <label for="jeastAddress">Jeast Address:</label>
+            <input type="text" class="form-control" id="jeastAddress" name="jeastAddress">
+        </div>
+        <div class="form-group">
+            <label for="monthly_dues">Monthly Dues:</label>
+            <input type="text" class="form-control" id="monthly_dues" name="monthly_dues" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+=======
                 <form id="addPropertyForm">
                     <div class="form-group">
                         <label for="propertyId">Property ID:</label>
                         <input type="text" class="form-control" id="propertyId" name="propertyId">
                     </div>
                     <div class="form-group">
-                        <label for="userId">User ID:</label>
-                        <input type="text" class="form-control" id="userId" name="userId">
+                        <label for="userId">Home    owner:</label>
+                        <select class="form-control" id="userId" name="userId">
+                            <option value="">Select Homeowner</option>
+                            <?php
+                            // Query to fetch users from the database
+                            $query = "SELECT user_id, firstname, lastname FROM user";
+                            $result = $conn->query($query);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row['firstname'] . ' ' . $row['lastname'] . '">' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
+                                }
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="jeastId">Jeast ID:</label>
+                        <label for="monthly_dues">Monthly Dues</label>
                         <input type="text" class="form-control" id="jeastId" name="jeastId">
                     </div>
                     <div class="form-group">
@@ -109,6 +176,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
+>>>>>>> Stashed changes
         </div>
     </div>
 </div>
@@ -132,7 +200,7 @@
                     "data": "user_id"
                 },
                 {
-                    "data": "jeast_id"
+                    "data": "monthly_dues"
                 },
                 {
                     "data": "lotArea"
@@ -154,10 +222,8 @@
         $('#addPropertyForm').submit(function(e) {
             e.preventDefault(); // Prevent default form submission
             // Add your AJAX request to submit form data here
-            // Example:
-            /*
             $.ajax({
-                url: 'add_property.php',
+                url: 'php/add_property.php',
                 method: 'POST',
                 data: $(this).serialize(),
                 success: function(response) {
@@ -167,15 +233,17 @@
                     $('#addPropertyModal').modal('hide');
                     // Refresh DataTable
                     $('#propertyTable').DataTable().ajax.reload();
+                    // Show success toast
+                    toastr.success('Property added successfully');
                 },
                 error: function(xhr, status, error) {
                     // Handle error
                     console.error(xhr.responseText);
+                    // Show error toast
+                    toastr.error('Error adding property: ' + xhr.responseText);
                 }
             });
-            */
         });
-
         // Handle click event for edit button       
         $('#propertyTable').on('click', '.edit-btn', function() {
             var propertyId = $(this).data('id');
@@ -189,5 +257,30 @@
             // Perform delete action here, e.g., show confirmation dialog and delete the entry
             console.log('Delete clicked for property ID:', propertyId);
         });
+    });
+</script>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get elements
+        const lotAreaInput = document.getElementById("lotArea");
+        const hoaDuesLabel = document.getElementById("hoaDuesLabel");
+        const monthlyDuesInput = document.getElementById("monthly_dues");
+
+        // Function to calculate monthly dues
+        function calculateMonthlyDues() {
+            const lotArea = parseFloat(lotAreaInput.value);
+            const hoaDues = parseFloat(hoaDuesLabel.textContent.split(":")[1].trim());
+            const monthlyDues = lotArea * hoaDues;
+
+            // Update the monthly dues input field
+            monthlyDuesInput.value = isNaN(monthlyDues) ? "" : monthlyDues.toFixed(2);
+        }
+
+        // Add event listeners
+        lotAreaInput.addEventListener("input", calculateMonthlyDues);
+        hoaDuesLabel.addEventListener("change", calculateMonthlyDues);
     });
 </script>

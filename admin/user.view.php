@@ -13,8 +13,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Property</li>
+                        <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
+                        <li class="breadcrumb-item active">User Verification</li>
                     </ol>
                 </div>
             </div>
@@ -27,7 +27,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Title</h3>
+                <h3 class="card-title">Users Verification</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -54,6 +54,7 @@
                             <th>Last Name</th>
                             <th>User Type</th>
                             <th>Gender</th>
+                            <th>Marital Status</th>
                             <th>Email</th>
                             <th>Phone Number</th>
                             <th>Mailing Address</th>
@@ -69,7 +70,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                Footer
+                <!-- Footer -->
             </div>
             <!-- /.card-footer-->
         </div>
@@ -98,12 +99,12 @@
                         <input type="text" class="form-control" id="username" name="username">
                     </div>
                     <div class="form-group">
-                        <label for="firstName">First Name:</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName">
+                        <label for="firstname">First Name:</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname">
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Last Name:</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName">
+                        <label for="lastname">Last Name:</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname">
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
@@ -122,6 +123,17 @@
                         <select class="form-control" id="gender" name="gender">
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Marital Status:</label>
+                        <select class="form-control" id="status" name="status">
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Widow">Widow</option>
+                            <option value="Divorce">Divorce</option>
+                            <option value="Seperated">Seperated</option>
                             <option value="Other">Other</option>
                         </select>
                     </div>
@@ -184,6 +196,9 @@
                     "data": "gender"
                 },
                 {
+                    "data": "status"
+                },
+                {
                     "data": "email"
                 },
                 {
@@ -200,10 +215,13 @@
                 },
                 {
                     "data": null,
-                    "render": function(data, type, row) {
-                        return '<button class="edit-btn" data-id="' + row.userID + '">Edit</button> <button class="delete-btn" data-id="' + row.userID + '">Delete</button>';
-                    }
+"render": function(data, type, row) {
+    return '<button class="edit-btn" data-id="' + row.userID + '" style="display: inline-block;">Edit</button> <button class="view-btn" data-id="' + row.userID + '" style="display: inline-block;">View</button>';
+}
                 }
+            ],
+            "buttons": [
+                'copy', 'excel', 'pdf', 'print' // Add buttons for copy, excel, pdf, and print
             ]
         });
 
@@ -214,39 +232,43 @@
             console.log('Edit clicked for user ID:', userId);
         });
 
-        // Handle click event for delete button
-        $('#userTable').on('click', '.delete-btn', function() {
+        // Handle click event for view button
+        $('#userTable').on('click', '.view-btn', function() {
             var userId = $(this).data('id');
-            // Perform delete action here, e.g., show confirmation dialog and delete the user
-            console.log('Delete clicked for user ID:', userId);
+            // Perform view action here, e.g., show confirmation dialog and view the user
+            console.log('View clicked for user ID:', userId);
         });
 
-
         // Submit form via Ajax
-        $('#addPropertyForm').submit(function(e) {
+        $('#addUserForm').submit(function(e) {
             e.preventDefault(); // Prevent default form submission
             // Add your AJAX request to submit form data here
-            // Example:
-            /*
             $.ajax({
-                url: 'add_property.php',
+                url: 'php/add_user.php', // URL to handle the form submission
                 method: 'POST',
-                data: $(this).serialize(),
+                data: $(this).serialize(), // Serialize form data
                 success: function(response) {
                     // Handle success response
                     console.log(response);
+                    // Display toast notification
+                    if (response.success) {
+                        toastr.success(response.message);
+                    } else {
+                        toastr.error(response.message);
+                    }
                     // Close modal
-                    $('#addPropertyModal').modal('hide');
+                    $('#addUserModal').modal('hide');
                     // Refresh DataTable
-                    $('#propertyTable').DataTable().ajax.reload();
+                    $('#userTable').DataTable().ajax.reload();
                 },
                 error: function(xhr, status, error) {
                     // Handle error
                     console.error(xhr.responseText);
+                    // Display generic error toast notification
+                    toastr.error('An error occurred while processing your request. Please try again later.');
                 }
             });
-            */
         });
-
     });
+
 </script>

@@ -1,41 +1,47 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+// Database connection parameters
+$servername = "localhost";
+$username = "root"; // Replace with your actual database username
+$password = ""; // Replace with your actual database password
+$dbname = "hoa_db";
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+    // Email details
+    $to = "jvelandres@gmail.com"; // Replace with your actual email address
+    $headers = "From: $name <$email>";
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+    // Save form data to database
+    $sql = "INSERT INTO emailform (name, email, subject, message) 
+            VALUES ('$name', '$email', '$subject', '$message')";
 
-  echo $contact->send();
+    if ($conn->query($sql) === TRUE) { 
+        // Send email
+        if (mail($to, $subject, $message, $headers)) {
+            echo "Email sent successfully.";
+        } else {
+            echo "Error sending email.";
+        }
+    } else {
+        echo "Error saving data to database: " . $conn->error;
+    }
+} else {
+    echo "Invalid request method.";
+}
+
+// Close database connection
+$conn->close();
 ?>
