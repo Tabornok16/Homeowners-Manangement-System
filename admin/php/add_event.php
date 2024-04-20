@@ -6,6 +6,7 @@ require_once '../../connect.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve the form data`
     $t_id = $_POST['transaction'];
+    $t = $_POST['title'];
     $s = $_POST['status'] ?? 'null';
     $s_d = $_POST['start_date'] ?? '';
     $e_d = $_POST['end_date'] ?? '';
@@ -32,14 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Prepare and execute the SQL query to insert the event into the database
-    $sql = "INSERT INTO events (transaction_id, status, start_date, end_date) VALUES ('$t_id', '$s', '$s_d', '$e_d')";
+    $sql = "INSERT INTO events (transaction_id, title, status, start_date, end_date) VALUES ('$t_id', '$t', '$s', '$s_d', '$e_d')";
 
     if ($conn->query($sql) === TRUE) {
-        if ($conn->query($sql) === TRUE) {
-            $response = array("success" => true, "message" => "Event added successfully");
-        } else {
-            $response = array("success" => true, "message" => "Error: " . $sql . "<br>" . $conn->error);
-        }
+        $response = array("success" => true, "message" => "Event added successfully");
+    } else {
+        $response = array("success" => true, "message" => "Error: " . $sql . "<br>" . $conn->error);
     }
 
     // Close the database connection

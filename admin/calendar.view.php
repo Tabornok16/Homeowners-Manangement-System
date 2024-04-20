@@ -15,6 +15,8 @@ if ($conn->connect_error) {
 
 $sql = "SELECT * FROM events";
 $result = $conn->query($sql);
+$events = array();
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -50,15 +52,26 @@ $result = $conn->query($sql);
                 <div class="sticky-top mb-3">
                   <div class="card">
                     <div class="card-header">
-                      <h4 class="card-title">Draggable Event | Reservation</h4>
+                      <h4 class="card-title">List of Transaction</h4>
                     </div>
                     <div class="card-body">
                       <!-- the events -->
                       <div id="external-events">
                         <?php
                         if ($result) {
+                          $index = 1;
                           while ($row = $result->fetch_assoc()) {
-                            echo '<div class="external-event bg-success">' . $row['transaction_id'] . '</div>';
+                            $event = array(
+                              'title' => $row['title'],
+                              'start' => $row['start_date'],
+                              'end' => $row['end_date'],
+                              'backgroundColor' => 'green',
+                              'borderColor' => '#90EE90',
+                              'textColor' => '#fff'
+                            );
+                            $events[] = $event;
+                            echo '<div class="external-event bg-success">' . $index . '. ' . $row['title'] . '</div>';
+                            $index++;
                           }
                         }
                         ?>
@@ -84,7 +97,7 @@ $result = $conn->query($sql);
                         <h3 class="card-title">Create Event</h3>
                       </div>
                       <div class="card-body">
-                        <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                        <!-- <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
                           <ul class="fc-color-picker" id="color-chooser">
                             <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
                             <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
@@ -92,7 +105,7 @@ $result = $conn->query($sql);
                             <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
                             <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
                           </ul>
-                        </div>
+                        </div> -->
                         <!-- /btn-group -->
                         <div class="form-group">
                           <label for="start_date">Title:</label>
@@ -104,7 +117,7 @@ $result = $conn->query($sql);
                           $sql = "SELECT * FROM transaction";
                           $result = $conn->query($sql);
 
-                          echo '<select name="transaction">';
+                          echo '<select name="transaction" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">';
                           if ($result) {
                             while ($row = $result->fetch_assoc()) {
                               echo '<option value="' . $row['tx_id'] . '">' . $row['tx_no'] . '</option>';
@@ -206,6 +219,7 @@ $result = $conn->query($sql);
           m = date.getMonth(),
           y = date.getFullYear()
 
+        var calendarEvents = <?php echo json_encode($events); ?>;
         var Calendar = FullCalendar.Calendar;
         var Draggable = FullCalendar.Draggable;
 
@@ -236,9 +250,8 @@ $result = $conn->query($sql);
           },
           themeSystem: 'bootstrap',
           //Random default events
-          events: [
+          events: calendarEvents,
 
-          ],
           editable: true,
           droppable: true, // this allows things to be dropped onto the calendar !!!
           drop: function(info) {
