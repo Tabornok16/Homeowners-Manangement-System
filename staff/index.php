@@ -156,14 +156,13 @@
           <!-- small box -->
           <div class="small-box bg-orange">
             <div class="inner">
-              <h3>44</h3>
-
+            <?php include('php/count_transaction.php')?>
               <p>Total Transactions</p>
             </div>
             <div class="icon">
             <i class="fas fa-exchange-alt"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="transaction.history.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
