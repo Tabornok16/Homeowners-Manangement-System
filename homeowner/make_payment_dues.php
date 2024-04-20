@@ -106,7 +106,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- Payment form -->
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="submit_payment.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="paymentAmount">PHP Amount:</label>
                             <input type="text" class="form-control" id="paymentAmount" name="paymentAmount" value="<?php echo $amount; ?>" readonly>
@@ -115,8 +115,9 @@
                         <?php
                         // Construct the payment message
                         $paymentMessage = "Payment for $value";
+                        
                         ?>
-
+                        <input type="text" class="form-control" id="paymentfor" name="paymentfor" value="<?php echo filter_var($_GET['value'], FILTER_SANITIZE_STRING);; ?>" readonly> </input>
                         <!-- Display the payment message -->
                         <div class="alert alert-info" role="alert">
                             <?php echo $paymentMessage; ?>
@@ -146,7 +147,6 @@
 
     
 
-</html>
 
 
             </div>
@@ -165,3 +165,45 @@
 
 
 <?php include('partial/footer.php') ?>
+
+
+
+<script>
+// Assuming you're using jQuery for AJAX requests
+$(document).ready(function() {
+    $('form').submit(function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+        
+        // Submit the form via AJAX
+        $.ajax({
+            url: 'submit_payment.php',
+            type: 'POST',
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                // Check the response from the server
+                if (response.success) {
+                    // Display success Toastr notification
+                    toastr.success(response.success);
+
+                    // Redirect after displaying Toastr notification
+                    setTimeout(function() {
+                        window.location.href = 'create_hoa_dues.view.php';
+                    }, 1000); // Redirect after 3 seconds (adjust the time as needed)
+                } else if (response.error) {
+                    // Display error Toastr notification
+                    toastr.error(response.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                // Display error Toastr notification for AJAX errors
+                toastr.error('AJAX Error: ' + error);
+            }
+        });
+    });
+});
+
+
+</script>
