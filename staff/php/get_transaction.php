@@ -39,7 +39,15 @@ try {
             echo '<td>' . $row["tx_no"] . '</td>';
             echo '<td>' . $row["homeowner"] . '</td>';
             echo '<td>' . $row["amount"] . '</td>';
-            echo '<td>' . $row["verification"] . '</td>';
+            echo "<td>";
+                                                        if ($row['verification'] == 1) {
+                                                            echo '<span class="badge badge-danger">Unpaid</span>';
+                                                        } elseif ($row['verification'] == 2) {
+                                                            echo '<span class="badge badge-success">Paid</span>';
+                                                        } else {
+                                                            echo "Unknown"; // Handle other cases if needed
+                                                        }
+                                                        echo "</td>";
             echo '</tr>';
         }
 
