@@ -1,6 +1,8 @@
 <?php
-require_once 'connect.php';
+// Start the session
 session_start();
+
+require_once 'connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
@@ -10,19 +12,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = mysqli_real_escape_string($conn, $username);
     $password = mysqli_real_escape_string($conn, $password);
 
-    // Check if there's an existing session variable for login attempts
-    if (!isset($_SESSION['login_attempts'])) {
-        $_SESSION['login_attempts'] = 0; // Initialize login attempts counter
-    }
-
-    // Increment login attempts
-    $_SESSION['login_attempts']++;
-
-    // Check if the number of login attempts exceeds the limit
-    $max_login_attempts = 3; // Adjust as needed
-    if ($_SESSION['login_attempts'] > $max_login_attempts) {
-        echo '<script>alert("Maximum login attempts exceeded. Please try again later."); window.location.href = "login.php";</script>';
-        exit(); // Stop further execution
+    // Check if there's an existing session variable for the last failed login attempt
+    if (isset($_SESSION['last_failed_login'])) {
+        // Check if enough time has passed since the last failed attempt (5 minutes = 300 seconds)
+        $time_since_last_attempt = time() - $_SESSION['last_failed_login'];
+        if ($time_since_last_attempt < 300) {
+            // Display error message and prevent login
+            echo '<script>alert("Please wait for 5 minutes before attempting to login again."); window.location.href = "login.php";</script>';
+            exit(); // Stop further execution
+        }
     }
 
     // Query to check if the user exists with the given credentials
@@ -30,12 +28,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
+        // Reset login attempts counter on successful login
+        unset($_SESSION['last_failed_login']);
+
+        // User found, set session variables
         $row = $result->fetch_assoc();
-        // Set session variables
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['firstname'] = $row['firstname'];
         $_SESSION['lastname'] = $row['lastname'];
-        $_SESSION['username'] = $row['username']; // Setting username to session
+        $_SESSION['username'] = $row['username'];
         $position = $row["userType"];
 
         // Redirect based on user type
@@ -50,8 +51,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         exit(); // Stop further execution
     } else {
+        // Record the timestamp of the failed login attempt
+        $_SESSION['last_failed_login'] = time();
+
         // Invalid credentials
-        echo '<script>alert("Invalid Credentials. Attempts remaining: '. ($max_login_attempts - $_SESSION['login_attempts']) .'"); window.location.href = "login.php";</script>';
+        echo '<script>alert("Invalid Credentials."); window.location.href = "login.php";</script>';
         exit(); // Stop further execution
     }
 } else {
