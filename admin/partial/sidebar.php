@@ -73,13 +73,13 @@
             </p>
           </a>
         </li>
-        <li class="nav-item <?php echo ($currentFile === 'calendar.view.php') ? 'menu-open' : ''; ?>">
+        <!-- <li class="nav-item <?php echo ($currentFile === 'calendar.view.php') ? 'menu-open' : ''; ?>">
           <a href="./calendar.view.php" class="nav-link">
             <i class="nav-icon fas fa-calendar-alt"></i>
             <p>
               Calendar
             </p>
-          </a>
+          </a> -->
         </li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link show-multilevel-sidebar">

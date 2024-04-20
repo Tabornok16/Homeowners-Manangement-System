@@ -59,14 +59,14 @@
             </a>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="./calendar.view.php" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i> <!-- Changed from "far fa-image" to "fas fa-home" for property -->
+              <i class="nav-icon fas fa-calendar-alt"></i> 
               <p>
                 Calendar
               </p>
             </a>
-          </li>
+          </li> -->
    
 
 
