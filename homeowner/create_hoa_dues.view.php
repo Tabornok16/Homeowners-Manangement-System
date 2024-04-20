@@ -32,7 +32,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="display-6 text-left">Price List</h2>
+                                    <h2 class="display-6 text-left">Monthly Dues</h2>
                                 </div>
                                 <div class="card-body">
                                     <table class="table table-bordered text-center">
