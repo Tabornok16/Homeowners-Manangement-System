@@ -54,7 +54,7 @@
                                 <th>Monthly Dues</th>
                                 <th>Lot Area</th>
                                 <th>Jeast Address</th>
-                                <th>Action</th>
+                                <!-- <th>Action</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -172,12 +172,6 @@
             },
             {
                 "data": "jeastAdd"
-            },
-            {
-                "data": null,
-                "render": function (data, type, row) {
-                    return '<button class="edit-btn" data-id="' + row.prop_id + '">Edit</button> <button class="delete-btn" data-id="' + row.prop_id + '">Delete</button>';
-                }
             }
             ]
 
