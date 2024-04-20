@@ -10,8 +10,8 @@
       <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
 
         <li><a href="user.view.php" class="dropdown-item">Users Verification</a></li>
-        <li><a href="#" class="dropdown-item">Posting Announcement</a></li>
-        <li><a href="./invoice.php" class="dropdown-item">Invoice</a></li>
+        <li><a href="./post.php" class="dropdown-item">Posting Announcement</a></li>
+        <!-- <li><a href="./invoice.php" class="dropdown-item">Invoice</a></li> -->
 
 
 
@@ -42,7 +42,7 @@
                   </ul>
                 </li> -->
 
-                <li><a href="#" class="dropdown-item">Other</a></li>
+                <li><a href="./" class="dropdown-item">Other</a></li>
               </ul>
             </li>
             <!-- End Level three -->
