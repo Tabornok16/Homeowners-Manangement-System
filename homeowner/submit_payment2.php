@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check if necessary form fields are set and not empty
         if (isset($_POST['paymentAmount']) && isset($_POST['paymentfor']) && isset($_POST['paymentReference']) && isset($_FILES['proofImage'])) {
             // Retrieve form data
+            
             $paymentAmount = $_POST['paymentAmount'];
             $payment_for = $_POST['paymentfor'];
             $ref_no = $_POST['paymentReference'];
@@ -37,18 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $transactionStatement->bindParam(':ref_no', $ref_no);
                 $transactionStatement->bindParam(':proof_of_payment', $targetFile);
                 $transactionStatement->execute();
-
-                // Update tables with payment_for matching the particular column in transaction_particulars to value 2
-                $updateQuery = "UPDATE transaction_particulars SET verification = 2 WHERE particular = :payment_for";
-                $updateStatement = $db->prepare($updateQuery);
-                $updateStatement->bindParam(':payment_for', $payment_for);
-                $updateStatement->execute();
-
-                                // Update tables with payment_for matching the particular column in transaction_particulars to value 2
-                                $updateQuery = "UPDATE transaction SET verification = 2 WHERE tx_no = :tx_no";
-                                $updateStatement = $db->prepare($updateQuery);
-                                $updateStatement->bindParam(':tx_no', $tx_no);
-                                $updateStatement->execute();
 
 
                 // Commit the transaction

@@ -117,8 +117,9 @@
                         $paymentMessage = "Payment for $value";
                         
                         ?>
-                        <input type="text" class="form-control" id="paymentfor" name="paymentfor" value="<?php echo filter_var($_GET['value'], FILTER_SANITIZE_STRING);; ?>" hidden></input>
-                        <input type="text" class="form-control" id="tx_no" name="tx_no" value="<?php echo filter_var($_GET['tx_no'], FILTER_SANITIZE_STRING);; ?>" hidden> </input>
+                        <input type="text" class="form-control" id="id" name="id" value="<?php echo $id; ?>" hidden></input>
+                        <input type="text" class="form-control" id="paymentfor" name="paymentfor" value="<?php echo filter_var($_GET['value'], FILTER_SANITIZE_STRING); ?>" hidden></input>
+                        <input type="text" class="form-control" id="tx_no" name="tx_no" value="<?php echo filter_var($_GET['tx_no'], FILTER_SANITIZE_STRING); ?>" hidden> </input>
                         <!-- Display the payment message -->
                         <!-- Display the payment message -->
                         <div class="alert alert-info" role="alert">
