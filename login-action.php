@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         if ($row['password']) {
             // Password is correct, set session variables
+            $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['firstname'] = $row['firstname'];
             $_SESSION['lastname'] = $row['lastname'];
             $_SESSION['username'] = $row['username']; // Setting username to session

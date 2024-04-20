@@ -1,16 +1,17 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-      <strong>Homeowner Management Essentials<a href="#"></a>
-    </strong>2024 All rights reserved
-      <div class="float-right d-none d-sm-inline-block">
-      </div>
-    </footer>
+    <strong>Homeowner Management Essentials<a href="#"></a></strong><br>
+    2024 All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b></b> 
+    </div>
+  </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
 
@@ -36,18 +37,34 @@
   <!-- daterangepicker -->
   <script src="../plugins/moment/moment.min.js"></script>
   <script src="../plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- Tempusdominus Bootstrap 4 -->  
+  <!-- Tempusdominus Bootstrap 4 -->
   <script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
   <!-- Summernote -->
   <script src="../plugins/summernote/summernote-bs4.min.js"></script>
   <!-- overlayScrollbars -->
   <script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
-  <!-- <script src="../dist/js/adminlte.js"></script> -->
-  <!-- AdminLTE for demo purposes -->
-  <!-- <script src="../dist/js/demo.js"></script> -->
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
-</body>
+  <script src="../dist/js/adminlte.js"></script>
 
-</html>
+  <!-- Toastr -->
+  <script src="../plugins/toastr/toastr.min.js"></script>
+  <!-- DataTables  & Plugins -->
+  <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="../plugins/jszip/jszip.min.js"></script>
+  <script src="../plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="../plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
+  <!-- autoNumeric.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/autonumeric/4.10.5/autoNumeric.min.js"></script>
+  </body>
+
+  </html>
