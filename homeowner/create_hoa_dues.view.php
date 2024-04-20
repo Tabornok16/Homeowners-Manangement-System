@@ -93,7 +93,7 @@
                                                             echo "Unknown"; // Handle other cases if needed
                                                         }
                                                         echo "</td>";
-                                                        echo "<td>" . ' <a href="make_payment.php?amount=' . $row['amount'] . '&value=' . $row['particular'] . '" class="btn btn-primary">Make Payment</a>' . "</td>";
+                                                        echo "<td>" . ' <a href="make_payment_dues.php?amount=' . $row['amount'] . '&value=' . $row['particular'] . '" class="btn btn-primary">Make Payment</a>' . "</td>";
                                                         echo "</tr>";
                                                         // Add more fields as needed
                                                     }
