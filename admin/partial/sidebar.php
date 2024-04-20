@@ -2,8 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" id="sidebar" style="background-color: #11101D;">
   <!-- Brand Logo -->
   <a href="./index.php" class="brand-link">
-    <img src="../assets/img/home-logo.png" alt="HOA Logo" class="brand-image img-circle elevation-3"
-      style="opacity: .8">
+    <img src="../assets/img/home-logo.png" alt="HOA Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">ADMINISTRATOR</span>
   </a>
 
@@ -38,49 +37,50 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-        <li class="nav-item menu-open">
+        <?php
+        $currentFile = basename($_SERVER['PHP_SELF']);
+        ?>
+
+        <li class="nav-item <?php echo ($currentFile === 'index.php') ? 'menu-open' : ''; ?>">
           <a href="./index.php" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
-            <!-- Changed from "far fa-image" to "fas fa-tachometer-alt" for dashboard -->
             <p>
               Dashboard
             </p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <?php echo ($currentFile === 'user.view.php') ? 'menu-open' : ''; ?>">
           <a href="./user.view.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i> <!-- Changed from "far fa-image" to "fas fa-users" for users -->
+            <i class="nav-icon fas fa-users"></i>
             <p>
               Users
             </p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <?php echo ($currentFile === 'transaction.history.php') ? 'menu-open' : ''; ?>">
           <a href="transaction.history.php" class="nav-link">
             <i class="nav-icon fas fa-exchange-alt"></i>
-            <!-- Changed from "far fa-image" to "fas fa-exchange-alt" for transaction -->
             <p>
               Transaction
             </p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <?php echo ($currentFile === 'property.view.php') ? 'menu-open' : ''; ?>">
           <a href="./property.view.php" class="nav-link">
-            <i class="nav-icon fas fa-home"></i> <!-- Changed from "far fa-image" to "fas fa-home" for property -->
+            <i class="nav-icon fas fa-home"></i>
             <p>
               Property
             </p>
           </a>
         </li>
-        <!-- <li class="nav-item">
+        <li class="nav-item <?php echo ($currentFile === 'calendar.view.php') ? 'menu-open' : ''; ?>">
           <a href="./calendar.view.php" class="nav-link">
             <i class="nav-icon fas fa-calendar-alt"></i>
-            Changed from "far fa-image" to "fas fa-home" for property
             <p>
               Calendar
             </p>
           </a>
-        </li> -->
+        </li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link show-multilevel-sidebar">
             <i class="nav-icon fas fa-th"></i>
@@ -92,7 +92,7 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="./set_price.view.php" class="nav-link">
-                <i class="nav-icon fas fa-dollar-sign"></i> <!-- Icon for "Set Price" -->
+                <i class="nav-icon fas fa-dollar-sign"></i>
                 <p>
                   Set Price
                 </p>
@@ -100,13 +100,13 @@
             </li>
             <li class="nav-item">
               <a href="./category_list.view.php" class="nav-link">
-                <i class="nav-icon fas fa-tags"></i> <!-- Icon for "Category" -->
+                <i class="nav-icon fas fa-tags"></i>
                 <p>Category</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="./stakeholder_list.view.php" class="nav-link">
-                <i class="nav-icon fas fa-users"></i> <!-- Icon for "Unit/Stakeholder" -->
+                <i class="nav-icon fas fa-users"></i>
                 <p>Unit/Stakeholder</p>
               </a>
             </li>
