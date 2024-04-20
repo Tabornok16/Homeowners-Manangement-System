@@ -43,24 +43,15 @@
                     die("Connection failed: " . $conn->connect_error);
                 }
                 
-                if (isset($row['verification'])) {
-                    // Access the 'verification_status' key
-                    $verification = $row['verification'];
-                    // Proceed with using $verification variable or perform other operations
-                } else {
-                    // Handle the case when 'verification' key is not set in the array
-                    echo "";
-                }
-                
-
                 // Query to fetch users information
                 $sql = "SELECT * FROM user";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                     // Output table header
-                    echo "<h2>Users Information</h2>";
-                    echo "<table><tr><th>User ID</th><th>User Name</th><th>First Name</th><th>Last Name</th><th>User Type</th><th>Gender</th><th>Email</th><th>Phone Number</th><th>Mailing Address</th><th>Postal Code</th><th>Birthday</th><th>Verification Status</th><th>Actions</th></tr>";
+                    echo "<div class='table-responsive'>";
+                    echo "<table class='table table-bordered table-striped'>";
+                    echo "<thead><tr><th>User ID</th><th>User Name</th><th>First Name</th><th>Last Name</th><th>User Type</th><th>Gender</th><th>Email</th><th>Phone Number</th><th>Mailing Address</th><th>Postal Code</th><th>Birthday</th><th>Actions</th></tr></thead><tbody>";
 
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
@@ -75,21 +66,16 @@
                         echo "<td>" . $row["madd"] . "</td>";
                         echo "<td>" . $row["postal"] . "</td>";
                         echo "<td>" . $row["birthday"] . "</td>";
-                        echo "<td>" . $row["verification"] . "</td>";
-                        echo "<td>";
-                
                         echo "<td>";
                         echo "<a href='uupdate.php?id=" . $row["user_id"] . "' class='btn btn-primary mr-1'>Update</a>";
                         echo "<a href='javascript:void(0);' onclick='confirmView(" . $row["user_id"] . ")' class='btn btn-info mr-1'>View</a>";
-                        echo "<a href='javascript:void(0);' onclick='updateVerification(" . $row["user_id"] . ", \"Verified\")' class='btn btn-success mr-1'>Verified</a>";
-                        echo "<a href='javascript:void(0);' onclick='updateVerification(" . $row["user_id"] . ", \"Unverified\")' class='btn btn-danger'>Unverified</a>";
-                        echo "</td>";
-
                         echo "</td>";
                         echo "</tr>";
                     }
+                    echo "</tbody></table>";
+                    echo "</div>";
 
-                    echo "</table>";
+
                 } else {
                     echo "<p>No results found.</p>";
                 }
@@ -120,35 +106,6 @@
                         error: function(xhr, status, error) {
                             console.error('Error fetching row details:', error);
                             alert('Error fetching row details. Please try again.');
-                        }
-                    });
-                }
-
-                function updateVerification(userId, status, button) {
-                    // Send an AJAX request to update the verification status
-                    // Example using jQuery:
-                    $.ajax({
-                        url: 'update_verification.php',
-                        method: 'POST',
-                        data: { userId: userId, status: status },
-                        success: function(response) {
-                            // Handle success response
-                            alert('Verification status updated successfully.');
-                            // Reload or update the table as needed
-                            if (status === 'Verified') {
-                                button.classList.remove('btn-danger');
-                                button.classList.add('btn-success');
-                                button.innerText = 'Verified';
-                            } else {
-                                button.classList.remove('btn-success');
-                                button.classList.add('btn-danger');
-                                button.innerText = 'Unverified';
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            // Handle error
-                            console.error('Error updating verification status:', error);
-                            alert('Error updating verification status. Please try again.');
                         }
                     });
                 }
