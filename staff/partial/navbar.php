@@ -10,7 +10,7 @@
       <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
 
         <li><a href="verify_homeowner.php" class="dropdown-item">Homeowner Verification</a></li>
-        <li><a href="#" class="dropdown-item">Posting Announcement</a></li>
+        <li><a href="./post.php" class="dropdown-item">Posting Announcement</a></li>
         <!-- <li><a href="./invoice.php" class="dropdown-item">Invoice</a></li> -->
 
 
@@ -48,7 +48,7 @@
           </ul>
         </li>
         <!-- End Level two -->
-        <li><a href="#" class="dropdown-item">Transaction History</a></li>
+        <li><a href="./transaction.history.php" class="dropdown-item">Transaction History</a></li>
       </ul>
     </li>
   </ul>
