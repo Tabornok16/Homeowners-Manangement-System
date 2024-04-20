@@ -61,7 +61,8 @@
 
                     // Perform payment processing logic here
                     // For demonstration purposes, we'll just display a success message including the retrieved values
-                    $paymentMessage = "<br> <br> Payment of PHP $amount for $value under $subcategory - $type - $subtype by $unitStakeholder. <br> <br> Do you want to proceed? <br> <br>";
+                    $paymentMessage = "<br> <br> Payment of PHP $amount for $value under $subcategory - $type - $subtype by $unitStakeholder. <br><br> Deposit in this Bank. <br> <br> BPI Account
+<br> Bank Account Name: Jubilation Home Village East Homeowner's Association Inc. <br> Account Number: 002641-0027-02 <br> BPI Biñan City <br> <br>     Do you want to proceed? <br> <br>";
                 } else {
                     // Redirect the user back to the previous page or show an error message if parameters are missing
                     header("Location: index.php"); // Redirect to index.php or any other appropriate page
