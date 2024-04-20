@@ -27,7 +27,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Homeowners' Property Record</h3>
+                <h3 class="card-title">My Properties</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -40,9 +40,9 @@
             </div>
             <div class="card-body">
                 <!-- Button to trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPropertyModal">
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPropertyModal">
                     Add Property
-                </button>
+                </button> -->
                 <br><br>
                 <div class="table-responsive">
                     <table id="propertyTable"
