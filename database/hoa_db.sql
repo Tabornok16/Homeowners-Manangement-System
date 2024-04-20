@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2024 at 05:21 AM
+-- Generation Time: Apr 20, 2024 at 12:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,6 +45,29 @@ INSERT INTO `category` (`id`, `category`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `payment_submissions`
+--
+
+CREATE TABLE `payment_submissions` (
+  `id` int(11) NOT NULL,
+  `tx_no` varchar(255) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL,
+  `payment_for` varchar(255) DEFAULT NULL,
+  `ref_no` varchar(255) DEFAULT NULL,
+  `proof_of_payment` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payment_submissions`
+--
+
+INSERT INTO `payment_submissions` (`id`, `tx_no`, `amount`, `payment_for`, `ref_no`, `proof_of_payment`) VALUES
+(14, 'TX0001', 33330, 'EA100004', '33330', '../uploads/qweqwe.png'),
+(15, 'TX003', 33330, 'EA100004', '33330', '../uploads/qweqwe.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `property`
 --
 
@@ -64,12 +87,9 @@ CREATE TABLE `property` (
 
 INSERT INTO `property` (`id`, `prop_id`, `user_id`, `homeowner`, `monthly_dues`, `lotArea`, `jeastAdd`) VALUES
 (25, 'EA100004', 5, 'Ramon Ang', 33330, 5555, 'test'),
-(26, 'EA100003', 5, 'Ramon Ang', 3996, 666, 'test2'),
 (27, 'EA0000000003', 6, 'Jhoane Luna', 12744, 2124, 'test'),
 (28, 'EZADsaDASD', 6, 'Jhoane Luna', 127926, 21321, 'test'),
-(29, 'EA100002', 5, 'Ramon Ang', 73872, 12312, 'test'),
 (30, 'qweqwe', 3, 'john paul', 738, 123, 'test'),
-(31, 'EA100001', 5, 'Ramon Ang', 73926, 12321, 'ewrtew'),
 (32, 'EA100003', 3, 'john paul', 73926, 12321, '51235');
 
 -- --------------------------------------------------------
@@ -156,7 +176,7 @@ CREATE TABLE `transaction` (
   `homeowner` varchar(255) NOT NULL,
   `tx_date` datetime DEFAULT NULL,
   `amount` int(11) NOT NULL,
-  `verification` varchar(255) NOT NULL
+  `verification` int(11) NOT NULL DEFAULT 1 COMMENT '1 = unpaid\r\n2 = paid'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -164,7 +184,9 @@ CREATE TABLE `transaction` (
 --
 
 INSERT INTO `transaction` (`tx_id`, `tx_no`, `homeowner`, `tx_date`, `amount`, `verification`) VALUES
-(30, 'TXN009090', '3', '2024-04-11 00:00:00', 375534, '');
+(45, 'TX001', '5', '2024-04-20 00:00:00', 33330, 1),
+(46, 'TX002', '5', '2024-04-20 00:00:00', 33330, 1),
+(47, 'TX003', '5', '2024-04-20 00:00:00', 33330, 2);
 
 -- --------------------------------------------------------
 
@@ -176,20 +198,20 @@ CREATE TABLE `transaction_particulars` (
   `id` int(11) NOT NULL,
   `tx_id` varchar(255) NOT NULL,
   `tx_no` varchar(255) NOT NULL,
+  `homeowner` int(11) NOT NULL,
   `particular` varchar(255) NOT NULL,
   `fromDate` varchar(255) NOT NULL,
   `toDate` varchar(255) NOT NULL,
   `amount` int(11) NOT NULL,
-  `verification` varchar(255) NOT NULL
+  `verification` int(11) NOT NULL DEFAULT 1 COMMENT '1 = unpaid\r\n2 = paid'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `transaction_particulars`
 --
 
-INSERT INTO `transaction_particulars` (`id`, `tx_id`, `tx_no`, `particular`, `fromDate`, `toDate`, `amount`, `verification`) VALUES
-(12, '30', 'TXN009090', 'qweqwe', '2024-04', '2024-11', 5904, ''),
-(13, '30', 'TXN009090', 'EA100003', '2024-04', '2024-08', 369630, '');
+INSERT INTO `transaction_particulars` (`id`, `tx_id`, `tx_no`, `homeowner`, `particular`, `fromDate`, `toDate`, `amount`, `verification`) VALUES
+(45, '47', 'TX003', 5, 'EA100004', '2024-04', '2024-04', 33330, 2);
 
 -- --------------------------------------------------------
 
@@ -223,11 +245,7 @@ INSERT INTO `user` (`user_id`, `username`, `firstname`, `lastname`, `password`, 
 (4, 'joyce', 'Joyce', 'Wendy', '12345', 2, 'female', '', '2001-03-16', 'joyce@gmail.com', 197999999, 'Santa Rosa Laguna', 4026),
 (5, 'Ramon', 'Ramon', 'Ang', '12345', 3, 'male', '', '2002-03-19', 'ramon@gmail.com', 279999999, 'Cavinti Laguna', 4023),
 (6, 'Jhoane', 'Jhoane', 'Luna', '12345', 2, 'female', '', '1983-07-23', 'jhoane@gmail.com', 1979655555, 'Binan Laguna', 4025),
-(14, 'Raymond', 'Raymond', 'Ibanez', '12345', 3, 'male', '', '2001-01-01', 'raymond@gmail.com', 2147483647, 'Santa Rosa Laguna', 4026),
-(26, '', '', '', '$2y$10$5hXULaSiWMr5jg6BZKMMie4.MJZ0Yvry1cnyim/S2e51d1p.ghZR2', 0, '', '', '0000-00-00', '', 0, '', 0),
-(27, '', '', '', '$2y$10$VapWUguGnHvt3vE95UdoqeFUjvh4vES3Z6kuTrAsdy6zHp/IV1vty', 0, '', '', '0000-00-00', '', 0, '', 0),
-(28, '', '', '', '$2y$10$7peNY88HwlXLoIht6YAJYuwGF/F1uMhAogBw4/dtXeWxfix6MKPmu', 0, '', '', '0000-00-00', '', 0, '', 0),
-(29, '', '', '', '$2y$10$KhJ4vdr5gK8vKWPPJQv3y.oVyDUuvPI3NeMu61FlG4CBS/ZuRmJtO', 0, '', '', '0000-00-00', '', 0, '', 0);
+(14, 'Raymond', 'Raymond', 'Ibanez', '12345', 3, 'male', '', '2001-01-01', 'raymond@gmail.com', 2147483647, 'Santa Rosa Laguna', 4026);
 
 --
 -- Indexes for dumped tables
@@ -237,6 +255,12 @@ INSERT INTO `user` (`user_id`, `username`, `firstname`, `lastname`, `password`, 
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payment_submissions`
+--
+ALTER TABLE `payment_submissions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -286,6 +310,12 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `payment_submissions`
+--
+ALTER TABLE `payment_submissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
@@ -307,13 +337,13 @@ ALTER TABLE `stakeholder`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `tx_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `tx_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `transaction_particulars`
 --
 ALTER TABLE `transaction_particulars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `user`

@@ -5,6 +5,9 @@ $username = "root";
 $password = "";
 $dbname = "hoa_db";
 
+
+$id = $_SESSION['user_id'];
+
 try {
     // Create connection using PDO
     $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -12,7 +15,7 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Query to fetch all records from the Transaction table
-    $sql = "SELECT tx_id, tx_date, tx_no, homeowner, amount, verification FROM transaction";
+    $sql = "SELECT * FROM transaction WHERE homeowner = '$id'";
     $stmt = $db->prepare($sql);
     $stmt->execute();
 
@@ -39,7 +42,15 @@ try {
             echo '<td>' . $row["tx_no"] . '</td>';
             echo '<td>' . $row["homeowner"] . '</td>';
             echo '<td>' . $row["amount"] . '</td>';
-            echo '<td>' . $row["verification"] . '</td>';
+            echo "<td>";
+            if ($row['verification'] == 1) {
+                echo '<span class="badge badge-danger">Unpaid</span>';
+            } elseif ($row['verification'] == 2) {
+                echo '<span class="badge badge-success">Paid</span>';
+            } else {
+                echo "Unknown"; // Handle other cases if needed
+            }
+            echo "</td>";
             echo '</tr>';
         }
 

@@ -40,12 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tx_id = $db->lastInsertId();
 
             // Insert transaction particulars data into the database
-            $particularsQuery = "INSERT INTO transaction_particulars (tx_id, tx_no, particular, fromDate, toDate, amount) VALUES (:tx_id, :tx_no, :particular, :fromDate, :toDate, :amount)";
+            $particularsQuery = "INSERT INTO transaction_particulars (tx_id, tx_no, homeowner, particular, fromDate, toDate, amount) VALUES (:tx_id, :tx_no, :user_id, :particular, :fromDate, :toDate, :amount)";
             $particularsStatement = $db->prepare($particularsQuery);
-
+            
             // Iterate over each transaction detail and insert into the database
             foreach ($propertyIDs as $key => $propertyID) {
                 $particular = $propertyID;
+                $particularsStatement->bindParam(':user_id', $user_id);
                 $particularsStatement->bindParam(':tx_id', $tx_id);
                 $particularsStatement->bindParam(':tx_no', $tx_no);
                 $particularsStatement->bindParam(':particular', $particular);

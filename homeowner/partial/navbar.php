@@ -36,7 +36,7 @@
             </li>
           </ul>
         </li>
-        <li><a href="#" class="dropdown-item">Transaction History</a></li>
+        <li><a href="transaction.history.php" class="dropdown-item">Transaction History</a></li>
       </ul>
     </li>
   </ul>
