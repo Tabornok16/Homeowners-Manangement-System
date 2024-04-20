@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2024 at 12:23 PM
+-- Generation Time: Apr 20, 2024 at 10:58 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,12 +45,38 @@ INSERT INTO `category` (`id`, `category`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `amount` varchar(255) DEFAULT NULL,
+  `refno` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Triggers `notifications`
+--
+DELIMITER $$
+CREATE TRIGGER `transaction_particulars` AFTER INSERT ON `notifications` FOR EACH ROW BEGIN
+    INSERT INTO notifications (type, amount, refno) 
+    VALUES (tx_no, amount, particular); -- Adjust column names as per your tables
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `payment_submissions`
 --
 
 CREATE TABLE `payment_submissions` (
   `id` int(11) NOT NULL,
   `tx_no` varchar(255) DEFAULT NULL,
+  `homeowner` int(11) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
   `payment_for` varchar(255) DEFAULT NULL,
   `ref_no` varchar(255) DEFAULT NULL,
@@ -61,9 +87,47 @@ CREATE TABLE `payment_submissions` (
 -- Dumping data for table `payment_submissions`
 --
 
-INSERT INTO `payment_submissions` (`id`, `tx_no`, `amount`, `payment_for`, `ref_no`, `proof_of_payment`) VALUES
-(14, 'TX0001', 33330, 'EA100004', '33330', '../uploads/qweqwe.png'),
-(15, 'TX003', 33330, 'EA100004', '33330', '../uploads/qweqwe.png');
+INSERT INTO `payment_submissions` (`id`, `tx_no`, `homeowner`, `amount`, `payment_for`, `ref_no`, `proof_of_payment`) VALUES
+(14, 'TX0001', NULL, 33330, 'EA100004', '33330', '../uploads/qweqwe.png'),
+(15, 'TX003', NULL, 33330, 'EA100004', '33330', '../uploads/qweqwe.png'),
+(16, 'inquiry', NULL, 5000, 'paymentfor', '4214', '../uploads/qweqwe.png'),
+(17, 'Miscellaneous', NULL, 5000, '<br /><b>Warning</b>:  Undefined variable $Subcategory in <b>C:\\xampp\\htdocs\\Homeowners-Manangement-System\\homeowner\\make_payment.php</b> on line <b>110</b><br />', '12412', '../uploads/qweqwe.png'),
+(18, 'Miscellaneous', NULL, 5000, 'construction', '124', '../uploads/qweqwe.png'),
+(19, 'TX003', 5, 33330, 'EA100004', '124', '../uploads/qweqwe.png'),
+(20, NULL, 5, 5000, 'construction', '5000', '../uploads/qweqwe.png'),
+(21, NULL, 5, 100000, 'construction', '125215', '../uploads/qweqwe.png'),
+(22, 'Miscellaneous', 5, 100000, 'construction', '12421', '../uploads/qweqwe.png'),
+(23, 'Miscellaneous', 5, 100000, 'construction', '124214214', '../uploads/qweqwe.png'),
+(24, 'Miscellaneous', 5, 100000, 'construction', '124214214', '../uploads/qweqwe.png'),
+(25, 'Miscellaneous', 5, 100000, 'construction', '124214214', '../uploads/qweqwe.png'),
+(26, 'Miscellaneous', 5, 100000, 'construction', '124214214', '../uploads/qweqwe.png'),
+(27, 'Miscellaneous', 5, 100000, 'construction', '124214214', '../uploads/qweqwe.png'),
+(28, 'Miscellaneous', 5, 100000, 'construction', '124214214', '../uploads/qweqwe.png'),
+(29, 'Miscellaneous', 5, 100000, 'construction', '124214214', '../uploads/qweqwe.png'),
+(30, 'Miscellaneous', 5, 100000, 'construction', '124214214', '../uploads/qweqwe.png'),
+(31, 'Miscellaneous', 5, 100000, 'construction', '124214214', '../uploads/qweqwe.png'),
+(32, 'Miscellaneous', 5, 100000, 'construction', '124214214', '../uploads/qweqwe.png'),
+(33, 'Miscellaneous', 5, 100000, 'construction', '124214214', '../uploads/qweqwe.png'),
+(34, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(35, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(36, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(37, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(38, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(39, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(40, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(41, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(42, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(43, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(44, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(45, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(46, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(47, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(48, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(49, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(50, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(51, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(52, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png'),
+(53, 'Miscellaneous', 5, 100000, 'construction', '214214', '../uploads/qweqwe.png');
 
 -- --------------------------------------------------------
 
@@ -186,7 +250,10 @@ CREATE TABLE `transaction` (
 INSERT INTO `transaction` (`tx_id`, `tx_no`, `homeowner`, `tx_date`, `amount`, `verification`) VALUES
 (45, 'TX001', '5', '2024-04-20 00:00:00', 33330, 1),
 (46, 'TX002', '5', '2024-04-20 00:00:00', 33330, 1),
-(47, 'TX003', '5', '2024-04-20 00:00:00', 33330, 2);
+(47, 'TX003', '5', '2024-04-20 00:00:00', 33330, 2),
+(48, 'TX003', '5', '2024-04-20 00:00:00', 33330, 2),
+(49, '', '5', '2024-04-20 00:00:00', 33330, 1),
+(50, 'TX001', '5', '2024-04-20 00:00:00', 33330, 1);
 
 -- --------------------------------------------------------
 
@@ -211,7 +278,10 @@ CREATE TABLE `transaction_particulars` (
 --
 
 INSERT INTO `transaction_particulars` (`id`, `tx_id`, `tx_no`, `homeowner`, `particular`, `fromDate`, `toDate`, `amount`, `verification`) VALUES
-(45, '47', 'TX003', 5, 'EA100004', '2024-04', '2024-04', 33330, 2);
+(45, '47', 'TX003', 5, 'EA100004', '2024-04', '2024-04', 33330, 2),
+(46, '48', 'TX003', 5, 'EA100004', '2024-04', '2024-04', 33330, 2),
+(47, '49', '', 5, 'EA100004', '2024-04', '2024-04', 33330, 2),
+(48, '50', 'TX001', 5, 'EA100004', '2024-04', '2024-04', 33330, 2);
 
 -- --------------------------------------------------------
 
@@ -255,6 +325,12 @@ INSERT INTO `user` (`user_id`, `username`, `firstname`, `lastname`, `password`, 
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -310,10 +386,16 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `payment_submissions`
 --
 ALTER TABLE `payment_submissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `property`
@@ -337,13 +419,13 @@ ALTER TABLE `stakeholder`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `tx_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `tx_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `transaction_particulars`
 --
 ALTER TABLE `transaction_particulars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `user`
