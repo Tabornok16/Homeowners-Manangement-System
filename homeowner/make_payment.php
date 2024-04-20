@@ -51,7 +51,7 @@
                     // Sanitize and retrieve the amount and value from the URL
                     $amount = filter_var($_GET['amount'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
                     $value = filter_var($_GET['value'], FILTER_SANITIZE_STRING);
-
+                
                     // Fetch the values from the database result
                     $row = mysqli_fetch_assoc($result);
                     $subcategory = $row['Subcategory'];
@@ -71,18 +71,8 @@
                 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make Payment</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
 
-<body>
     <h1>Payment Details</h1>
     <?php if (isset($paymentMessage)) : ?>
         <p><?php echo $paymentMessage; ?></p>

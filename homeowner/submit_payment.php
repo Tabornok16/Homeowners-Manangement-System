@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $paymentAmount = $_POST['paymentAmount'];
             $payment_for = $_POST['paymentfor'];
             $ref_no = $_POST['paymentReference'];
+            $tx_no = $_POST['tx_no'];
             
             // Check if the directory exists, if not, create it
             $targetDirectory = "../uploads/";
@@ -27,8 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Move uploaded file to specified directory
             if (move_uploaded_file($_FILES["proofImage"]["tmp_name"], $targetFile)) {
                 // Insert transaction data into the database
-                $transactionQuery = "INSERT INTO payment_submissions (amount, payment_for, ref_no, proof_of_payment) VALUES (:paymentAmount, :payment_for, :ref_no, :proof_of_payment)";
+                $transactionQuery = "INSERT INTO payment_submissions (tx_no, amount, payment_for, ref_no, proof_of_payment) VALUES (:tx_no, :paymentAmount, :payment_for, :ref_no, :proof_of_payment)";
                 $transactionStatement = $db->prepare($transactionQuery);
+                $transactionStatement->bindParam(':tx_no', $tx_no);
                 $transactionStatement->bindParam(':paymentAmount', $paymentAmount);
                 $transactionStatement->bindParam(':payment_for', $payment_for);
                 $transactionStatement->bindParam(':ref_no', $ref_no);
@@ -40,6 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $updateStatement = $db->prepare($updateQuery);
                 $updateStatement->bindParam(':payment_for', $payment_for);
                 $updateStatement->execute();
+
+                                // Update tables with payment_for matching the particular column in transaction_particulars to value 2
+                                $updateQuery = "UPDATE transaction SET verification = 2 WHERE tx_no = :tx_no";
+                                $updateStatement = $db->prepare($updateQuery);
+                                $updateStatement->bindParam(':tx_no', $tx_no);
+                                $updateStatement->execute();
+
 
                 // Commit the transaction
                 $db->commit();

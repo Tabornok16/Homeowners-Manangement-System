@@ -47,11 +47,11 @@
 
                 $result = mysqli_query($connection, $sql);
 
-                if ($result && isset($_GET['amount']) && isset($_GET['value'])) {
+                if ($result && isset($_GET['amount']) && isset($_GET['value']) && isset($_GET['tx_no'])) {
                     // Sanitize and retrieve the amount and value from the URL
                     $amount = filter_var($_GET['amount'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
                     $value = filter_var($_GET['value'], FILTER_SANITIZE_STRING);
-
+                    $tx_no = filter_var($_GET['tx_no'], FILTER_SANITIZE_STRING);
                     // Fetch the values from the database result
                     $row = mysqli_fetch_assoc($result);
                     $subcategory = $row['Subcategory'];
@@ -61,7 +61,7 @@
 
                     // Perform payment processing logic here
                     // For demonstration purposes, we'll just display a success message including the retrieved values
-                    $paymentMessage = "<br> <br> Payment of PHP $amount for $value <br><br> Deposit in this Bank. <br> <br> BPI Account
+                    $paymentMessage = "<br> <br> Payment of PHP $amount for $value with Transaction Number: $tx_no<br><br> Deposit in this Bank. <br> <br> BPI Account
 <br> Bank Account Name: Jubilation Home Village East Homeowner's Association Inc. <br> Account Number: 002641-0027-02 <br> BPI Biñan City <br> <br>     Do you want to proceed? <br> <br>";
                 } else {
                     // Redirect the user back to the previous page or show an error message if parameters are missing
@@ -117,7 +117,9 @@
                         $paymentMessage = "Payment for $value";
                         
                         ?>
-                        <input type="text" class="form-control" id="paymentfor" name="paymentfor" value="<?php echo filter_var($_GET['value'], FILTER_SANITIZE_STRING);; ?>" readonly> </input>
+                        <input type="text" class="form-control" id="paymentfor" name="paymentfor" value="<?php echo filter_var($_GET['value'], FILTER_SANITIZE_STRING);; ?>" hidden></input>
+                        <input type="text" class="form-control" id="tx_no" name="tx_no" value="<?php echo filter_var($_GET['tx_no'], FILTER_SANITIZE_STRING);; ?>" hidden> </input>
+                        <!-- Display the payment message -->
                         <!-- Display the payment message -->
                         <div class="alert alert-info" role="alert">
                             <?php echo $paymentMessage; ?>
