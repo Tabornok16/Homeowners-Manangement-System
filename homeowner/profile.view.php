@@ -61,6 +61,9 @@ $lastName = isset($lastName) ? $lastName : '';
                             <hr style="margin-top: 20px; margin-bottom: 20px;">
                             <h2 style="font-size: 24px; margin-bottom: 10px;">Additional Details</h2>
 
+                            <label for="password" style="display: block; margin-bottom: 5px;">Current Password</label>
+                            <input type="password" name="password" id="password" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+
                             <label for="password" style="display: block; margin-bottom: 5px;">Change Password:</label>
                             <input type="password" name="password" id="password" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
 
