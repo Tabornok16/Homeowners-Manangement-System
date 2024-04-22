@@ -46,7 +46,7 @@ try {
             if ($row['verification'] == 1) {
                 echo '<span class="badge badge-danger">Unpaid</span>';
             } elseif ($row['verification'] == 2) {
-                echo '<span class="badge badge-success">Paid</span>';
+                echo '<span class="badge badge-success">for verification</span>';
             } else {
                 echo "Unknown"; // Handle other cases if needed
             }

@@ -88,12 +88,12 @@
                                                         if ($row['verification'] == 1) {
                                                             echo '<span class="badge badge-danger">Unpaid</span>';
                                                         } elseif ($row['verification'] == 2) {
-                                                            echo '<span class="badge badge-success">Paid</span>';
+                                                            echo '<span class="badge badge-success">for verification</span>';
                                                         } else {
                                                             echo "Unknown"; // Handle other cases if needed
                                                         }
                                                         echo "</td>";
-                                                        echo "<td>" . ' <a href="make_payment_dues.php?amount=' . $row['amount'] . '&value=' . $row['particular'] . '&tx_no=' . $row['tx_no'] . '" class="btn btn-primary">Make Payment</a>' . "</td>";
+                                                        echo "<td>" . ' <a href="make_payment_dues.php?amount=' . $row['amount'] . '&value=' . $row['particular'] . '&tx_no=' . $row['tx_no'] . '" class="btn btn-primary">Proof of Payment</a>' . "</td>";
                                                         echo "</tr>";
                                                         // Add more fields as needed
                                                     }
