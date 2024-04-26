@@ -100,13 +100,13 @@
                             <option value="">Select Homeowner</option>
                             <?php
                             // Query to fetch users from the database
-                            $query = "SELECT user_id, firstname, lastname FROM user";
+                            $query = "SELECT id, fullName FROM homeowners";
                             $result = $conn->query($query);
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
-                                    // Concatenate user_id, first name, and last name
-                                    $option_value = $row['user_id'] . '|' . $row['firstname'] . ' ' . $row['lastname'];
-                                    echo '<option value="' . $option_value . '">' . $row['firstname'] . ' ' . $row['lastname'] . '</option>';
+                                    // Concatenate id, fullName
+                                    $option_value = $row['id'] . '|' . $row['fullName'];
+                                    echo '<option value="' . $option_value . '">' . $row['fullName'] . '</option>';
                                 }
                             }
                             ?>

@@ -115,7 +115,7 @@
                         <select class="form-control" id="userType" name="userType">
                             <option value="1">Admin</option>
                             <option value="2">Staff</option>
-                            <option value="3">Homeowner</option>
+                            <!-- <option value="3">Homeowner</option> -->
                         </select>
                     </div>
                     <div class="form-group">

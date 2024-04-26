@@ -37,25 +37,23 @@
                                         <select class="form-control" id="vendor" name="vendor">
                                             <option value="" disabled selected>Select Homeowner</option>
                                             <?php
-                                            // Fetch vendors from the database and populate the dropdown in the modal
-                                            $query = "SELECT * FROM user WHERE userType = 3;";
-                                            $result = $db->query($query);
+                                                // Assuming $db is your PDO database connection
+                                                $query = "SELECT id, fullName FROM homeowners"; // Select only the necessary columns
+                                                $stmt = $db->prepare($query);
+                                                $stmt->execute();
 
-                                            if ($result) {
-                                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                                    // Capitalize the first, middle, and last names
-                                                    $lastname = strtoupper($row['lastname']);
-                                                    $firstname = strtoupper($row['firstname']);
-                                                    $middlename = strtoupper($row['middlename']);
+                                                if ($stmt) {
+                                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                                        // Capitalize the first letter of each word in the full name
+                                                        $fullName = ucwords(strtolower($row['fullName']));
 
-                                                    // Concatenate the capitalized names
-                                                    $fullname = $lastname . " " . $firstname . " " . $middlename;
-
-                                                    // Display the capitalized full name as an option
-                                                    echo "<option value=" . $row['user_id'] . ">{$fullname}</option>";
+                                                        // Display the full name as an option with the ID as the value
+                                                        echo "<option value='" . $row['id'] . "'>$fullName</option>";
+                                                    }
                                                 }
-                                            }
                                             ?>
+
+
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
@@ -242,12 +240,12 @@
         }
 
         $('#vendor').change(function () {
-            var userId = $(this).val(); // Get the selected user_id
+            var id = $(this).val(); // Get the selected user_id
             // Make AJAX request to fetch properties of selected homeowner
             $.ajax({
                 url: 'php/get_open_properties.php', // PHP script to fetch properties
                 method: 'POST',
-                data: { userId: userId }, // Send the selected user_id to the PHP script
+                data: { id: id }, // Send the selected user_id to the PHP script
                 dataType: 'json',
                 success: function (response) {
                     // Populate the property table with the retrieved data
