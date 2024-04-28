@@ -50,6 +50,17 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="./taccounts.php" class="nav-link">
+              <i class="nav-icon fas fa-cash-register"></i> <!-- Changed from "far fa-image" to "fas fa-home" for property -->
+              <p>
+                T-accounts
+              </p>
+            </a>
+          </li>
+
+
           <li class="nav-item">
             <a href="./transaction.history.php" class="nav-link">
               <i class="nav-icon fas fa-exchange-alt"></i> <!-- Changed from "far fa-image" to "fas fa-home" for property -->

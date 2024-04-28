@@ -56,7 +56,6 @@
                             <th>Email</th>
                             <!-- <th>Password</th> -->
                             <th>Contact Number</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,7 +87,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form id="addHomeownersForm">
+                <form id="addHomeownersForm">
                     <div class="form-group">
                         <label for="userName">User Name:</label>
                         <input type="text" class="form-control" id="userName" name="userName">
@@ -106,25 +105,28 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="bday">Birthday:</label>
-                        <input type="date" class="form-control" id="bday" name="bday">
+                        <span id="bdayError" style="color: red;"></span>
+                        <!-- Your form fields -->
+                        <div class="form-group">
+                            <label for="bday">Birthday:</label>
+                            <input type="date" class="form-control" id="bday" name="bday" min="<?php echo date('Y-m-d', strtotime('-18 years')); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactNum">Contact Number:</label>
+                            <input type="text" class="form-control" id="contactNum" name="contactNum">
+                        </div>
+                        <!-- Add more form fields as needed -->
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <div class="form-group">
-                        <label for="contactNum">Contact Number:</label>
-                        <input type="text" class="form-control" id="contactNum" name="contactNum">
-                    </div>
-                    <!-- Add more form fields as needed -->
-                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-
             </div>
         </div>
     </div>
@@ -133,7 +135,7 @@
 <?php include('partial/footer.php'); ?>
 
 <script>
-       document.getElementById('addHomeownersForm').addEventListener('submit', function(e) {
+    document.getElementById('addHomeownersForm').addEventListener('submit', function(e) {
         var birthday = new Date(document.getElementById('bday').value);
         var today = new Date();
         var age = today.getFullYear() - birthday.getFullYear();
@@ -147,80 +149,56 @@
     });
 
     $(document).ready(function() {
-    // Initialize DataTable
-    $('#homeownersTable').DataTable({
-    "ajax": {
-        "url": "php/get_homeowners.php", // URL to fetch homeowners data
-        "type": "GET", // Request type
-        "dataSrc": "data" // Data source (set to "data" as JSON root is an array)
-    },
-    "columns": [
-        {"data": "id"},
-        {"data": "userName"},
-        {"data": "fullName"},
-        {"data": "gender"},
-        {"data": "bday"},
-        {"data": "email"},
-        // {"data": "password"},
-        {"data": "contactNum"},
-        {
-            "data": null,
-            "render": function(data, type, row) {
-                return '<button class="edit-btn" data-id="' + row.id + '">Edit</button> <button class="view-btn" data-id="' + row.id + '">View</button>';
-            }
-        }
-    ],
-    "buttons": [
-        'copy', 'excel', 'pdf', 'print' // Add buttons for copy, excel, pdf, and print
-    ]
-});
-
-
-        // Handle click event for edit button
-        $('#homeownersTable').on('click', '.edit-btn', function() {
-            var homeownerId = $(this).data('id');
-            // Redirect to edit page or open modal for editing
-            window.location.href = 'edit_homeowners.php?id=' + homeownerId;
-        });
-
-    // Handle click event for View button
-    $('#homeownersTable').on('click', '.view-btn', function() {
-        var homeownerId = $(this).data('id');
-        // Perform view action here, e.g., show confirmation dialog and view the homeowner
-        console.log('View clicked for homeowners ID:', homeownerId);
-    });
-
-    // Submit form via Ajax
-    $('#addHomeownersForm').submit(function(e) {
-        e.preventDefault(); // Prevent default form submission
-        // Add your AJAX request to submit form data here
-        $.ajax({
-            url: 'php/add_homeowners.php', // URL to handle the form submission
-            method: 'POST',
-            data: $(this).serialize(), // Serialize form data
-            success: function(response) {
-                // Handle success response
-                console.log(response);
-                // Display toast notification
-                if (response.success) {
-                    toastr.success(response.message);
-                } else {
-                    toastr.error(response.message);
-                }
-                // Close modal
-                $('#addUserModal').modal('hide');
-                // Refresh DataTable
-                $('#homeownersTable').DataTable().ajax.reload();
+        // Initialize DataTable
+        $('#homeownersTable').DataTable({
+            "ajax": {
+                "url": "php/get_homeowners.php", // URL to fetch homeowners data
+                "type": "GET", // Request type
+                "dataSrc": "data" // Data source (set to "data" as JSON root is an array)
             },
-            error: function(xhr, status, error) {
-                // Handle error
-                console.error(xhr.responseText);
-                // Display generic error toast notification
-                toastr.error('An error occurred while processing your request. Please try again later.');
-            }
+            "columns": [
+                {"data": "id"},
+                {"data": "userName"},
+                {"data": "fullName"},
+                {"data": "gender"},
+                {"data": "bday"},
+                {"data": "email"},
+                {"data": "contactNum"}
+            ],
+            "buttons": [
+                'copy', 'excel', 'pdf', 'print' // Add buttons for copy, excel, pdf, and print
+            ]
+        });
+
+        // Submit form via Ajax
+        $('#addHomeownersForm').submit(function(e) {
+            e.preventDefault(); // Prevent default form submission
+            // Add your AJAX request to submit form data here
+            $.ajax({
+                url: 'php/add_homeowners.php', // URL to handle the form submission
+                method: 'POST',
+                data: $(this).serialize(), // Serialize form data
+                success: function(response) {
+                    // Handle success response
+                    console.log(response);
+                    // Display toast notification
+                    if (response.success) {
+                        toastr.success(response.message);
+                    } else {
+                        toastr.error(response.message);
+                    }
+                    // Close modal
+                    $('#addUserModal').modal('hide');
+                    // Refresh DataTable
+                    $('#homeownersTable').DataTable().ajax.reload();
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                    console.error(xhr.responseText);
+                    // Display generic error toast notification
+                    toastr.error('An error occurred while processing your request. Please try again later.');
+                }
+            });
         });
     });
-});
-
 </script>
-

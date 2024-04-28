@@ -12,25 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = mysqli_real_escape_string($conn, $username);
     $password = mysqli_real_escape_string($conn, $password);
 
-    // Check if there's an existing session variable for the last failed login attempt
-    if (isset($_SESSION['last_failed_login'])) {
-        // Check if enough time has passed since the last failed attempt (5 minutes = 300 seconds)
-        $time_since_last_attempt = time() - $_SESSION['last_failed_login'];
-        if ($time_since_last_attempt < 300) {
-            // Display error message and prevent login
-            echo '<script>alert("Please wait for 5 minutes before attempting to login again."); window.location.href = "login.php";</script>';
-            exit(); // Stop further execution
-        }
-    }
-
     // Query to check if the user exists with the given credentials
     $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // Reset login attempts counter on successful login
-        unset($_SESSION['last_failed_login']);
-
         // User found, set session variables
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['user_id'];
@@ -44,18 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: admin/index.php");
         } elseif ($position == "2") {
             header("Location: staff/index.php");
-        } elseif ($position == "3") {
-            header("Location: homeowner/index.php");
         } else {
-            header("Location: login.php");
+            header("Location: login-homeowner.php");
         }
         exit(); // Stop further execution
     } else {
-        // Record the timestamp of the failed login attempt
-        $_SESSION['last_failed_login'] = time();
-
         // Invalid credentials
-        echo '<script>alert("Invalid Credentials."); window.location.href = "login.php";</script>';
+        echo '<script> window.location.href = "choose.role.php";</script>';
         exit(); // Stop further execution
     }
 } else {

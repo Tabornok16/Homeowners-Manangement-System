@@ -6,17 +6,17 @@ include '../../connect2.php';
 header('Content-Type: application/json');
 
 // Check if user_id is provided in the POST request
-if(isset($_POST['userId'])) {
+if(isset($_POST['user_id'])) {
     // Sanitize the input to prevent SQL injection
-    $userId = filter_var($_POST['userId'], FILTER_SANITIZE_NUMBER_INT);
+    $userId = filter_var($_POST['user_id'], FILTER_SANITIZE_NUMBER_INT);
 
     // Prepare SQL query to fetch properties associated with the provided user_id
-    $query = "SELECT * FROM property WHERE user_id = :userId";
+    $query = "SELECT * FROM property WHERE user_id = :user_id";
 
     try {
         // Execute the query and fetch properties
         $statement = $db->prepare($query);
-        $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
         $statement->execute();
         $properties = $statement->fetchAll(PDO::FETCH_ASSOC);
 

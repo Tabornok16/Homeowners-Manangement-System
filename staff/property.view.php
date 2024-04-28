@@ -176,7 +176,7 @@
             {
                 "data": null,
                 "render": function (data, type, row) {
-                    return '<button class="edit-btn" data-id="' + row.prop_id + '">Edit</button> <button class="delete-btn" data-id="' + row.prop_id + '">Delete</button>';
+                    return '<button class="edit-btn" data-id="' + row.prop_id + '">Edit</button>';
                 }
             }
             ]

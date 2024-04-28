@@ -98,11 +98,11 @@
           <div class="card px-4 py-5 border-0 shadow position-relative">
             <span class="close-button" onclick="goBack()"><i class="fas fa-times"></i></span>
             <h4 class="text-primary text-center">LOGIN</h4>
-            <form id="accountForm" class="mt-4" method="POST" action="login-action.php">
+            <form id="accountForm" class="mt-4" method="POST" action="login2.php">
               <div class="mb-2">
                 <div class="form-floating form-group mb-4">
-                  <input type="text" class="form-control border-0 rounded-0 bg-transparent ps-0 custom-control" id="username" name="username" placeholder="Enter Username">
-                  <label for="username" class="form-label ps-0 custom-label">Username</label>
+                  <input type="text" class="form-control border-0 rounded-0 bg-transparent ps-0 custom-control" id="userName" name="userName" placeholder="Enter Username">
+                  <label for="userName" class="form-label ps-0 custom-label">Username</label>
                 </div>
                 <div class="form-group position-relative">
                   <div class="form-floating d-flex flex-wrap">
@@ -145,11 +145,11 @@
   // Function to handle form submission and redirection based on role
   $(document).ready(function() {
     $('#accountForm').submit(function(e) {
-      var role = $('#role').val();
-      if (role === 'admin' || role === 'staff') {
-        $(this).attr('action', 'login.php');
+      var role = $('3').val();
+      if (role === 'homeowner') {
+        $(this).attr('action', 'login-homeowner.php');
       } else {
-        $(this).attr('action', 'login-action.php');
+        $(this).attr('action', 'login2.php');
       }
     });
   });
