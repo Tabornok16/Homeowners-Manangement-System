@@ -122,7 +122,7 @@
                             <input type="text" class="form-control" id="paymentReference" name="paymentReference">
                         </div>
                         <div class="form-group">
-                            <label for="proofImage">Proof of Payment:</label>
+                            <label for="proofImage">Proof of Payment: <br> <span style="font-weight: normal;">format (e.g., JPEG, PNG) 20 KB to 100 KB</span><br></label>
                             <input type="file" class="form-control-file" id="proofImage" name="proofImage">
                         </div>
                         <!-- Add more payment form fields as needed -->

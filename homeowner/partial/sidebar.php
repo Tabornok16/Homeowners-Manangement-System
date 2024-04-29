@@ -75,17 +75,17 @@
               </p>
             </a>
           </li>-->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="calendar.php" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
-              </i> <!-- Changed from "far fa-image" to "fas fa-calendar for Reservation -->
-              <p>
+              </i> Changed from "far fa-image" to "fas fa-calendar for Reservation -->
+              <!-- <p>
                 Calendar
               </p>
             </a>
           </li>
         </ul>
-      </nav>
+      </nav> -->
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

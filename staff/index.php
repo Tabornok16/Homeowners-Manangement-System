@@ -35,12 +35,12 @@
           <?php
             // Include connect.php to establish database connection
             $servername = "localhost";
-            $username = "root";
+            $userName = "root";
             $password = "";
             $dbname = "hoa_db";
 
             // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
+            $conn = new mysqli($servername, $userName, $password, $dbname);
 
             // Check connection
             if ($conn->connect_error) {
@@ -50,7 +50,7 @@
             // Check if $conn is defined and not null
             if ($conn) {
                 // Query to count total users
-                $sql = "SELECT COUNT(*) AS totalUsers FROM user";
+                $sql = "SELECT COUNT(*) AS totalUsers FROM homeowners";
 
                 // Execute the query
                 $result = $conn->query($sql);
@@ -147,9 +147,6 @@
       </div>
 <!--End Total Number of Registered Properties-->
 
-
-
-
         
         <!-- ./col -->
         <div class="col-lg-3 col-6">
@@ -170,17 +167,15 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
-          <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>8</h3>
-
-              <p>Total Number of Reservation</p>
+            <h3><?php include('php/count_payment.submission.php')?></h3>
+              <p>Total Number of Payment Submission</p>
             </div>
             <div class="icon">
-            <i class="fas fa-calendar-check"></i>
+            <i class="fas fa-money-check-alt"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="transaction.history.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
           <!-- ./col -->
         </div>

@@ -12,31 +12,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userName = mysqli_real_escape_string($conn, $userName);
     $password = mysqli_real_escape_string($conn, $password);
 
-    // Hash the password for comparison
-    $hashedPassword = hash('sha256', $password);
+    // Query to retrieve the hashed password from the database
+    $stmt = $conn->prepare("SELECT id, password FROM homeowners WHERE userName = ?");
+    $stmt->bind_param("s", $userName);
+    $stmt->execute();
+    $stmt->store_result();
 
-    // Query to check if the user exists with the given credentials
-    $sql = "SELECT * FROM homeowners WHERE userName='$userName' AND password='$password'";
-    $result = $conn->query($sql);
+    if ($stmt->num_rows > 0) {
+        // User found, get the hashed password
+        $stmt->bind_result($userId, $hashedPassword);
+        $stmt->fetch();
 
-    if ($result && $result->num_rows > 0) {
-        // User found, set session variables
-        $row = $result->fetch_assoc();
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['fullName'] = $row['fullName'];
-        $_SESSION['userName'] = $row['userName'];
-        $position = $row["userType"];
+        // Verify the password using password_verify
+        if (password_verify($password, $hashedPassword)) {
+            // Password matches, set session variables
+            $_SESSION['id'] = $userId;
+            $_SESSION['userName'] = $userName;
 
-        // Redirect based on user type
-        if ($position == "3") {
-            header("Location: homeowner\index.php");
+            // Redirect to the appropriate page
+            header("Location: homeowner/index.php");
+            exit(); // Stop further execution after redirection
         } else {
-            header("Location: choose.role.php");
+            // Invalid password
+            echo '<script>alert("Invalid password."); window.location.href = "login.php";</script>';
+            exit(); // Stop further execution
         }
-        exit(); // Stop further execution after redirection
     } else {
-        // Invalid credentials
-        echo '<script>alert("Invalid credentials."); window.location.href = "choose.role.php";</script>';
+        // User not found
+        echo '<script>alert("User not found."); window.location.href = "login.php";</script>';
         exit(); // Stop further execution
     }
 } else {

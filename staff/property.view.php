@@ -1,7 +1,10 @@
-<?php include ('partial/header.php'); ?>
-<?php include ('partial/navbar.php'); ?>
-<?php include ('partial/sidebar.php'); ?>
-<?php include ('../connect.php'); ?>
+<?php
+include ('partial/header.php');
+include ('partial/navbar.php');
+include ('partial/sidebar.php');
+include ('../connect.php');
+?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -207,11 +210,13 @@
                 }
             });
         });
+
         // Handle click event for edit button       
         $('#propertyTable').on('click', '.edit-btn', function () {
             var propertyId = $(this).data('id');
             // Perform edit action here, e.g., open a modal with the selected data for editing
             console.log('Edit clicked for property ID:', propertyId);
+            // Example: openEditModal(propertyId);
         });
 
         // Handle click event for delete button
@@ -221,11 +226,7 @@
             console.log('Delete clicked for property ID:', propertyId);
         });
     });
-</script>
 
-
-
-<script>
     document.addEventListener("DOMContentLoaded", function () {
         // Get elements
         const lotAreaInput = document.getElementById("lotArea");

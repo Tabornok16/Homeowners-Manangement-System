@@ -36,7 +36,7 @@
               <?php
               // Code to fetch transaction count for the logged-in homeowner
               // Assuming user_id is stored in the session as $_SESSION['user_id']
-              $id = $_SESSION['user_id'];
+              $id = $_SESSION['id'];
               try {
                   $db = new PDO("mysql:host=localhost;dbname=hoa_db", "root", "");
                   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -71,12 +71,12 @@
               <?php
               // Code to fetch property count for the logged-in homeowner
               // Assuming user_id is stored in the session as $_SESSION['user_id']
-              $id = $_SESSION['user_id'];
+              $id = $_SESSION['id'];
               try {
                   $db = new PDO("mysql:host=localhost;dbname=hoa_db", "root", "");
                   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                  $sql = "SELECT COUNT(*) AS property_count FROM property WHERE user_id = :id";
+                  $sql = "SELECT COUNT(*) AS property_count FROM property WHERE id = :id";
                   $stmt = $db->prepare($sql);
                   $stmt->bindParam(':id', $id);
                   $stmt->execute();

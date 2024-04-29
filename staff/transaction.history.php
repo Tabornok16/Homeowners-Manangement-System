@@ -24,8 +24,28 @@
     <!-- Main content -->
     <section class="content">
 
+        <!-- Payment Submission Section -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Payment Submission</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <?php include './php/get_payment.submission.php'; ?>
+            </div>
+        </div>
+        <!-- End Payment Submission Section -->
+
         <!-- First Default Box -->
-        <div class="card mb-3"> <!-- Added mb-3 class for margin bottom -->
+        <div class="card mb-3">
             <div class="card-header">
                 <h3 class="card-title">Transaction Logs</h3>
 
@@ -43,9 +63,8 @@
             </div>
         </div>
 
-
         <!-- Second Default Box -->
-        <div class="card"> <!-- No margin added to the last default box -->
+        <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Transaction Particulars Logs</h3>
 
@@ -60,7 +79,6 @@
             </div>
             <div class="card-body">
                 <?php include './php/get_transaction.particulars.php'; ?>
-                <!-- Content of the second default box -->
             </div>
         </div>
 

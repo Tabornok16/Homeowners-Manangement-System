@@ -3,9 +3,9 @@
 session_start();
 
 // Check if the username session variable is set
-if (isset($_SESSION['username']) || isset($_SESSION['user_id'])) {
-    $username = $_SESSION['username'];
-    $id = $_SESSION['user_id'];
+if (isset($_SESSION['userName']) || isset($_SESSION['id'])) {
+    $username = $_SESSION['userName'];
+    $id = $_SESSION['id'];
     // You can now use $username in your code to display the username or perform any other operation
 } else {
     // If the username session variable is not set, redirect the user to the login page
