@@ -4,7 +4,7 @@ $username = "root";
 $password = "";
 $dbname = "hoa_db";
 
-$id = $_SESSION['user_id'];
+$id = $_SESSION['id'];
 
 try {
     // Create connection using PDO

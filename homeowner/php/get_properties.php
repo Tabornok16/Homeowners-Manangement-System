@@ -1,15 +1,12 @@
 <?php
-// Start session
-session_start();
 // Include connect.php to establish database connection
 require_once '../../connect.php';
 
 // Define an empty array to store properties
 $properties = array();
-$id = $_SESSION['user_id'];
 
 // Query to fetch properties
-$sql = "SELECT * FROM property WHERE user_id = '$id'";
+$sql = "SELECT * FROM property";
 $result = $conn->query($sql);   
 
 // Check if there are any results

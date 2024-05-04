@@ -9,12 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $db->beginTransaction();
 
         // Check if necessary form fields are set and not empty
-        if (isset($_POST['paymentAmount']) && isset($_POST['paymentfor']) && isset($_POST['paymentReference']) && isset($_FILES['proofImage'])) {
+        if (isset($_POST['paymentAmount']) && isset($_POST['paymentfor']) && isset($_POST['ref_no']) && isset($_FILES['proofImage'])) {
             // Retrieve form data
             
             $paymentAmount = $_POST['paymentAmount'];
             $payment_for = $_POST['paymentfor'];
-            $ref_no = $_POST['paymentReference'];
+            $ref_no = $_POST['ref_no'];
             $tx_no = $_POST['tx_no'];
             $homeowner = $_POST['id'];
             // Check if the directory exists, if not, create it

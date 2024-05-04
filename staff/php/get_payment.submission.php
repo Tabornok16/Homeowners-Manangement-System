@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-</head>
-<body>
-
 <?php
 $servername = "localhost";
 $username = "root";
@@ -18,7 +11,7 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Query to fetch all records from the payment_submission table
-    $sql = "SELECT id, tx_no, amount, payment_for, ref_no, proof_of_payment FROM payment_submissions";
+    $sql = "SELECT ps.*, t.* FROM payment_submissions ps INNER JOIN transaction t ON ps.tx_no = t.tx_no";
     $stmt = $db->prepare($sql);
     $stmt->execute();
 
@@ -33,6 +26,8 @@ try {
         echo '<th>Payment For</th>';
         echo '<th>Reference Number</th>';
         echo '<th>Proof of Payment</th>';
+        echo '<th>Status</th>';
+        echo '<th>Action</th>';
         echo '</tr>';
         echo '</thead>';
         echo '<tbody>';
@@ -46,6 +41,17 @@ try {
             echo '<td>' . $row["payment_for"] . '</td>';
             echo '<td>' . $row["ref_no"] . '</td>';
             echo '<td><a href="' . $row["proof_of_payment"] . '" data-lightbox="proof-of-payment" data-title="Proof of Payment">View Proof</a></td>';
+            echo "<td>";
+            if ($row['verification'] == 1) {
+                echo '<span class="badge badge-danger">Unpaid</span>';
+            } elseif ($row['verification'] == 2) {
+                echo '<span class="badge badge-primary">for verification</span>';
+            } elseif ($row['verification'] == 3) {
+                echo '<span class="badge badge-success">verified</span>';
+            } else {
+                echo "Unknown"; // Handle other cases if needed
+            }
+            echo "<td><button class='btn btn-primary verify-btn' data-txno='" . $row['tx_no'] . "'>Verify</button></td>";
             echo '</tr>';
         }
 
@@ -54,12 +60,41 @@ try {
     } else {
         echo "No records found";
     }
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 ?>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.verify-btn').click(function() {
+            var txNo = $(this).data('txno');
+            verifyTransaction(txNo);
+        });
 
-</body>
-</html>
+        function verifyTransaction(txNo) {
+            $.ajax({
+                url: 'verify.php',
+                type: 'GET',
+                data: {
+                    tx_no: txNo
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        // Update the UI or show a success message
+                     
+                        window.location.reload(true);
+                        // You can update the UI here, for example, change the button color or text
+                    } else {
+                        alert('Error verifying transaction: ' + response.error);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('Error verifying transaction: ' + error);
+                }
+            });
+        }
+    });
+</script>

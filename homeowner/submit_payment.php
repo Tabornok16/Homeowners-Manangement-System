@@ -39,13 +39,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $transactionStatement->execute();
 
                 // Update tables with payment_for matching the particular column in transaction_particulars to value 2
-                $updateQuery = "UPDATE transaction_particulars SET verification = 2 WHERE particular = :payment_for";
+                $updateQuery = "UPDATE transaction_particulars SET verification = 3 WHERE tx_no = :tx_no";
                 $updateStatement = $db->prepare($updateQuery);
-                $updateStatement->bindParam(':payment_for', $payment_for);
+                $updateStatement->bindParam(':tx_no', $tx_no);
                 $updateStatement->execute();
 
                                 // Update tables with payment_for matching the particular column in transaction_particulars to value 2
-                                $updateQuery = "UPDATE transaction SET verification = 2 WHERE tx_no = :tx_no";
+                                $updateQuery = "UPDATE transaction SET verification = 3 WHERE tx_no = :tx_no";
                                 $updateStatement = $db->prepare($updateQuery);
                                 $updateStatement->bindParam(':tx_no', $tx_no);
                                 $updateStatement->execute();

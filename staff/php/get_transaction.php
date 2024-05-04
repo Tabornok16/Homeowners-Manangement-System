@@ -40,14 +40,17 @@ try {
             echo '<td>' . $row["homeowner"] . '</td>';
             echo '<td>' . $row["amount"] . '</td>';
             echo "<td>";
-                                                        if ($row['verification'] == 1) {
-                                                            echo '<span class="badge badge-danger">Unpaid</span>';
-                                                        } elseif ($row['verification'] == 2) {
-                                                            echo '<span class="badge badge-success">Paid</span>';
-                                                        } else {
-                                                            echo "Unknown"; // Handle other cases if needed
-                                                        }
-                                                        echo "</td>";
+            
+            if ($row['verification'] == 1) {
+                echo '<span class="badge badge-danger">Unpaid</span>';
+            } elseif ($row['verification'] == 2) {
+                echo '<span class="badge badge-primary">for verification</span>';
+            } elseif ($row['verification'] == 3) {
+                echo '<span class="badge badge-success">verified</span>';
+            } else {
+                echo "Unknown"; // Handle other cases if needed
+            }
+            echo "</td>";
             echo '</tr>';
         }
 
@@ -56,10 +59,9 @@ try {
     } else {
         echo "No transactions found";
     }
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 
 // Close the database connection
 $db = null;
-?>

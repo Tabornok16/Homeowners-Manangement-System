@@ -38,7 +38,7 @@
                                             <option value="" disabled selected>Select Homeowner</option>
                                             <?php
                                                 // Assuming $db is your PDO database connection
-                                                $query = "SELECT user_id, fullName FROM homeowners"; // Select only the necessary columns
+                                                $query = "SELECT id, fullName FROM homeowners"; // Select only the necessary columns
                                                 $stmt = $db->prepare($query);
                                                 $stmt->execute();
 
@@ -48,7 +48,7 @@
                                                         $fullName = ucwords(strtolower($row['fullName']));
 
                                                         // Display the full name as an option with the ID as the value
-                                                        echo "<option value='" . $row['user_id'] . "'>$fullName</option>";
+                                                        echo "<option value='" . $row['id'] . "'>$fullName</option>";
                                                     }
                                                 }
                                             ?>

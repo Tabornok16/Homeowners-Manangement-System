@@ -82,7 +82,7 @@
                                                     echo "<td>" . $row['subtype'] . "</td>";
                                                     echo "<td>" . $row['unitStakeholder'] . "</td>";
                                                     echo "<td>" . $row['price'] . "</td>";
-                                                    echo "<td>" . '<a href="make_payment.php?amount=' . $row['price'] . '&value=' . $row['category'] . '" class="btn btn-primary">Make Payment</a>' . "</td>";
+                                                    echo "<td>" . '<a href="make_payment.php?amount=' . $row['price'] . '&value=' . $row['category'] . '" class="btn btn-primary">Submit Proof of Payment</a>' . "</td>";
                                                     echo "</tr>";
                                                     // Add more fields as needed
                                                 }

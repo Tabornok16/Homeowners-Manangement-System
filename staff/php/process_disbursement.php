@@ -1,11 +1,11 @@
 <?php
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "hoa_db";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "hoa_db";
 
+// Process form data if submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -15,11 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare data for insertion
-    $amount = $_POST['amount'];
+    $date = $_POST['date'];
+    $debit = $_POST['debit'];
     $description = $_POST['description'];
 
     // SQL query to insert data into disbursement_account table
-    $sql = "INSERT INTO disbursement_account (amount, description, date) VALUES ('$amount', '$description', NOW())";
+    $sql = "INSERT INTO disbursement_account (date, debit, description) VALUES (NOW(), '$debit', '$description')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
@@ -28,9 +29,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $conn->close();
-} else {
-    // Redirect back to the form page if accessed directly
-    header("Location: your_form_page.php");
-    exit();
 }
 ?>

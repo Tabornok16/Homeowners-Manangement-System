@@ -5,7 +5,7 @@ include('partial/sidebar.php');
 
 $metrics = [
   [
-    'title' => 'Registered Homeowners',
+    'title' => 'Registered Users',
     'icon' => 'ion ion-person',
     'link' => 'user.view.php',
     'color' => 'bg-success',
@@ -34,15 +34,15 @@ $metrics = [
       'error' => 'Error: Failed to fetch total transactions count.'
     ]
   ],
-  [
-    'title' => 'Reservations',
-    'icon' => 'fas fa-calendar-check',
-    'link' => '#',
-    'color' => 'bg-primary',
-    'data' => [
-      'value' => 8
-    ]
-  ]
+  // [
+  //   'title' => 'Reservations',
+  //   'icon' => 'fas fa-calendar-check',
+  //   'link' => '#',
+  //   'color' => 'bg-primary',
+  //   'data' => [
+  //     'value' => 8
+  //   ]
+  // ]
 ];
 
 ?>

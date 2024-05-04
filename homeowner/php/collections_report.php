@@ -10,14 +10,14 @@ if (!$connection) {
 // Define your SQL query
 $sql = "
     SELECT
-        CONCAT(user.firstname, ' ', user.lastname) AS homeowner,
+        CONCAT(homeowners.fullname)  AS homeowner,
         SUM(transaction_particulars.amount) AS total_amount_paid
     FROM
-        hoa_db.user
+        hoa_db.homeowners
     INNER JOIN
         hoa_db.transaction
     ON
-        user.user_id = transaction.user_id
+        user.id = transaction.id
     INNER JOIN
         hoa_db.transaction_particulars
     ON
@@ -25,7 +25,7 @@ $sql = "
     WHERE
         transaction_particulars.verification = 'Verified'
     GROUP BY
-        user.user_id;
+        homeowners.id;
 ";
 
 // Execute the query

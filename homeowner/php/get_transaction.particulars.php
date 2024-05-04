@@ -4,7 +4,7 @@ $username = "root";
 $password = "";
 $dbname = "hoa_db";
 
-$id = $_SESSION['user_id'];
+$id = $_SESSION['id'];
 
 try {
     // Create connection using PDO
@@ -13,7 +13,7 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Query to fetch all records from the transaction-particulars table
-    $sql = "SELECT * FROM transaction_particulars WHERE homeowner = '$id'";
+    $sql = "SELECT * FROM transaction_particulars WHERE homeowner = 'homeowner'";
     $stmt = $db->prepare($sql);
     $stmt->execute();
 

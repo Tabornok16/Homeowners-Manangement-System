@@ -6,7 +6,7 @@ $password = "";
 $dbname = "hoa_db";
 
 
-$id = $_SESSION['user_id'];
+$id = $_SESSION['id'];
 
 try {
     // Create connection using PDO
@@ -46,8 +46,11 @@ try {
             if ($row['verification'] == 1) {
                 echo '<span class="badge badge-danger">Unpaid</span>';
             } elseif ($row['verification'] == 2) {
-                echo '<span class="badge badge-success">for verification</span>';
-            } else {
+                echo '<span class="badge badge-primary">for verification</span>';
+            }  elseif ($row['verification'] == 3) {
+                echo '<span class="badge badge-success">verified</span>';
+            } 
+            else {
                 echo "Unknown"; // Handle other cases if needed
             }
             echo "</td>";

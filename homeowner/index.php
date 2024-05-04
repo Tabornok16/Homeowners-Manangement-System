@@ -66,38 +66,38 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
-          <div class="small-box bg-success">
+          <!-- <div class="small-box bg-success">
             <div class="inner">
-              <?php
+             <?php
               // Code to fetch property count for the logged-in homeowner
               // Assuming user_id is stored in the session as $_SESSION['user_id']
-              $id = $_SESSION['id'];
-              try {
-                  $db = new PDO("mysql:host=localhost;dbname=hoa_db", "root", "");
-                  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //       $id = $_SESSION['id'];
+        //       try {
+        //           $db = new PDO("mysql:host=localhost;dbname=hoa_db", "root", "");
+        //           $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                  $sql = "SELECT COUNT(*) AS property_count FROM property WHERE id = :id";
-                  $stmt = $db->prepare($sql);
-                  $stmt->bindParam(':id', $id);
-                  $stmt->execute();
+        //           $sql = "SELECT COUNT(*) AS property_count FROM property WHERE id = :id";
+        //           $stmt = $db->prepare($sql);
+        //           $stmt->bindParam(':id', $id);
+        //           $stmt->execute();
 
-                  $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                  $propertyCount = $result['property_count'];
+        //           $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        //           $propertyCount = $result['property_count'];
 
-                  echo '<h3>' . $propertyCount . '</h3>';
-              } catch(PDOException $e) {
-                  echo "Connection failed: " . $e->getMessage();
-              }
-              ?>
+        //           echo '<h3>' . $propertyCount . '</h3>';
+        //       } catch(PDOException $e) {
+        //           echo "Connection failed: " . $e->getMessage();
+        //       }
+         ?>
 
-              <p>Owned Properties</p>
-            </div>
-            <div class="icon">
-              <i class="fas fa-home"></i>
-            </div>
-            <a href="./property.view.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
+     <!-- <p>Owned Properties</p>
+        //     </div>
+        //     <div class="icon">
+        //       <i class="fas fa-home"></i>
+        //     </div>
+        //     <a href="./property.view.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        //   </div>
+        // </div> -->
         <!-- ./col -->
 
         </div>

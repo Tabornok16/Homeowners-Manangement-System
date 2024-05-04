@@ -6,7 +6,7 @@ include '../../connect2.php';
 header('Content-Type: application/json');
 
 // Check if user_id is provided in the POST request
-if(isset($_POST['userId'])) {
+if(isset($_POST['id'])) {
     // Sanitize the input to prevent SQL injection
     $userId = filter_var($_POST['userId'], FILTER_SANITIZE_NUMBER_INT);
 

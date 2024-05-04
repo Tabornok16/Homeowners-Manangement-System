@@ -9,7 +9,7 @@ if (isset($_SESSION['userName']) || isset($_SESSION['id'])) {
     // You can now use $username in your code to display the username or perform any other operation
 } else {
     // If the username session variable is not set, redirect the user to the login page
-    header("Location: login.php");
+    header("Location: login2.php");
     exit(); // Stop further execution
 }
 
